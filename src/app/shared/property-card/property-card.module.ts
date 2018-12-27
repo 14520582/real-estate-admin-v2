@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {MatCardModule, MatIconModule} from '@angular/material';
+import {MatCardModule, MatIconModule, MatButtonModule} from '@angular/material';
 import {SharedModule} from "../../ui-core/shared.module";
 import { PropertyCardComponent } from "./property-card.component";
 
@@ -10,7 +10,8 @@ import { PropertyCardComponent } from "./property-card.component";
   imports: [
     SharedModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   exports: [PropertyCardComponent]

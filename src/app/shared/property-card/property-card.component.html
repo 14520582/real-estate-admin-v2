@@ -1,4 +1,11 @@
-<div class="contain" (click)="goToDetails()" [ngStyle]="{'background-image': getImage()}" fxLayout="row" fxLayoutAlign="start end">
+<div class="contain" (click)="goToDetails()" [ngStyle]="{'background-image': getImage()}" fxLayout="column" fxLayoutAlign="space-between start">
+    <div class="header" fxLayoutAlign="space-between center">
+        <h1>#{{data.id}}</h1>
+        <div class="actions" fxLayoutAlign="start center">
+            <mat-icon>edit</mat-icon>
+            <mat-icon>delete</mat-icon>
+        </div>
+    </div>
     <div class="panel-details" fxLayout="column" fxLayoutAlign="space-between start">
         <h1>{{data.title}}</h1>
         <h2 class="price">{{data.price | money}}</h2>
@@ -7,7 +14,7 @@
             <span>{{data.address.district.name}}</span>,
             <span>{{data.address.city.name}}</span>
         </div>
-        <div fxLayout="row" fxLayoutAlign="space-between start">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
             <div class="detail" fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon>details</mat-icon>
                 <div>{{data.area}} m²</div>

@@ -112,7 +112,7 @@ export class FilterBarComponent implements OnInit {
           content += ',price<' + this.filterForm.controls['price'].value*1000000
       }
       if(content !== '')
-        this.router.navigate(['/properties-list/', {content: content}]);
+        this.router.navigate(['/manager-property/', {content: content}]);
     }else{
       console.log('nochange')
     }

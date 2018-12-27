@@ -1,0 +1,25 @@
+<div class="contain-home">
+  <app-filter-bar></app-filter-bar>
+  <div style="margin-top: 3px;" fxLayoutAlign="space-between center">
+        <mat-form-field style="width: 350px" appearance="outline">
+          <input matInput placeholder="Tra cứu theo mã"  [(ngModel)]="searchText">
+          <mat-icon matPrefix>search</mat-icon>
+          <button mat-button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-paginator [length]="totalOfItems" [pageSize]="pageSize" (page)="onPaginateChange($event)">
+        </mat-paginator>
+  </div>
+  <div style="height: calc(100vh - 200px);" PerfectScrollbar>
+      <div *ngIf="totalOfItems > 0;else noResult" fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <app-property-card [data]="item" *ngFor="let item of data" fxFlex="20" style="margin-bottom: 4px;"></app-property-card>
+      </div>
+      <ng-template #noResult>
+          <div class="empty" fxLayout="column" fxLayoutAlign="center center">
+              <h2>Result not found</h2>
+              <a [routerLink]="['/home']">Back to Home</a>
+          </div>
+      </ng-template>
+  </div>
+</div>

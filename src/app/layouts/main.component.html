@@ -5,10 +5,10 @@
                 <app-navbar layout="vertical"></app-navbar>
             </app-sidebar>
             <div class="content-wrapper">
-                <!-- <ng-container *ngIf="settings.layout.toolbar === 'below'">
+                <ng-container *ngIf="settings.layout.toolbar === 'below'">
                     <app-toolbar class="below" [ngClass]="settings.colorClasses.toolbar"></app-toolbar>
-                </ng-container> -->
-                <!-- <app-content></app-content> -->
+                </ng-container>
+                <app-content></app-content>
                 <ng-container *ngIf="settings.layout.footer === 'below'">
                     <app-footer class="below" [ngClass]="settings.colorClasses.footer"></app-footer>
                 </ng-container>

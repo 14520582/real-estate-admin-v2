@@ -2,31 +2,6 @@
   <div fxFill fxLayout="row" fxLayoutAlign="space-between center">
     <div fxLayout="row" fxLayoutAlign="start center">
       <h1 (click)="goHome()" style="margin-left: 8px">FindHouse</h1>
-      <h5 class="menu-dropdown" (click)="goPropertyList(0)">Mua</h5>
-      <h5 class="menu-dropdown" (click)="goPropertyList(1)">Thuê</h5>
-      <h5 class="menu-dropdown" #menuTriggerNews="matMenuTrigger" (mouseenter)="menuTriggerNews.openMenu()" [matMenuTriggerFor]="news">Tin
-        tức
-      </h5>
-      <mat-menu #news="matMenu" [overlapTrigger]="false">
-        <span (mouseleave)="menuTriggerNews.closeMenu()">
-          <button mat-menu-item (click)="navigateToPriceMap()">Giá bất động sản khu vực</button>
-          <button mat-menu-item (click)="navigateToNewsList('market')">Tin thị trường</button>
-          <button mat-menu-item (click)="navigateToNewsList('analysis')">Phân tích - nhận định</button>
-          <button mat-menu-item (click)="navigateToNewsList('policy')">Chính sách - Quản lý</button>
-          <button mat-menu-item (click)="navigateToNewsList('plan')">Thông tin quy hoạch</button>
-          <button mat-menu-item (click)="navigateToNewsList('worldwide')">Bất động sản thế giới</button>
-          <button mat-menu-item (click)="navigateToNewsList('constant')">Tư vất luật</button>
-          <button mat-menu-item (click)="navigateToNewsList('advice')">Lời khuyên</button>
-        </span>
-      </mat-menu>
-      <h5 class="menu-dropdown" #menuTriggerNews1="matMenuTrigger" (mouseenter)="menuTriggerNews1.openMenu()" [matMenuTriggerFor]="about">Về
-        chúng tôi</h5>
-      <mat-menu #about="matMenu" [overlapTrigger]="false">
-        <span (mouseleave)="menuTriggerNews1.closeMenu()">
-          <button mat-menu-item [routerLink]="['/about']">Giới thiệu</button>
-          <button mat-menu-item [routerLink]="['/contact']">Liên lạc</button>
-        </span>
-      </mat-menu>
     </div>
     <div fxLayout="row" fxLayoutAlign="start center">
       <button style="padding: 0px 0px;" mat-raised-button [routerLink]="['/post']">
