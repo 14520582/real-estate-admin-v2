@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+@import "app/ui-core/scss/core";
+.ps > .ps__rail-y {
+    visibility: collapse !important;
+}
+.dxm-tooltip {
+    z-index: 9999;
+}

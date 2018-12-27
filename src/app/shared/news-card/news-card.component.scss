@@ -1,0 +1,29 @@
+mat-card {
+    margin: 8px;
+}
+.mat-card {
+    padding: 8px !important;
+}
+.mat-card-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+.head-line {
+    font-size: 16px;
+    font-weight: 400;
+    color: black
+}
+.thumbnail{
+    margin-right: 16px;
+    height: 180px;
+    width: 180px;
+}
+h1 {
+    margin-top: 0px;
+    cursor: pointer;
+}
+h1:hover {
+    color: blue;
+    text-decoration-color: blue;
+    text-decoration-line: underline;
+}

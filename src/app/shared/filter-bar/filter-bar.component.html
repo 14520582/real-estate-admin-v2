@@ -1,0 +1,93 @@
+<form [formGroup]="filterForm">
+    <div class="container">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-form-field appearance="outline" (click)="$event.stopPropagation()">
+                        <mat-icon matPrefix>location_city</mat-icon>
+                        <mat-select formControlName="city">
+                            <mat-option [value]="-1">Tất cả</mat-option>
+                            <mat-option *ngFor="let city of cities" [value]="city.id">{{city.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" (click)="$event.stopPropagation()">
+                        <mat-icon matPrefix>location_on</mat-icon>
+                        <mat-select formControlName="district" (selectionChange)="changeDistrict()">
+                            <mat-option [value]="-1">Tất cả</mat-option>
+                            <mat-option *ngFor="let district of districts" [value]="district.id">{{district.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" (click)="$event.stopPropagation()">
+                        <mat-icon matPrefix>all_out</mat-icon>
+                        <mat-select formControlName="ward">
+                            <mat-option [value]="-1">Tất cả</mat-option>
+                            <mat-option *ngFor="let ward of wards" [value]="ward.id">{{ward.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" (click)="$event.stopPropagation()">
+                        <mat-icon matPrefix>home</mat-icon>
+                        <mat-select formControlName="type">
+                            <mat-option [value]="-1">Tất cả</mat-option>
+                            <mat-option *ngFor="let type of types" [value]="type">{{getType(type)}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="selection-bar" (click)="$event.stopPropagation()">
+                        <mat-icon>monetization_on</mat-icon>
+                        <mat-slider class="main-color" formControlName="price" step="1" max="10" min="0" thumbLabel></mat-slider>
+                        <div>{{getPriceFilter(filterForm.controls['price'].value)}}</div>
+                    </div>
+                    <div class="selection-bar" (click)="$event.stopPropagation()">
+                        <mat-icon>details</mat-icon>
+                        <mat-slider class="main-color" formControlName="area" step="20" max="140" min="0" thumbLabel></mat-slider>
+                        <div>{{getAreaFilter(filterForm.controls['area'].value)}}</div>
+                    </div>
+                </div>
+                <button mat-stroked-button class="main-color" style="margin-right: 16px;" (click)="filter()">Tìm kiếm</button>
+            </mat-expansion-panel-header>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-form-field appearance="outline" (click)="$event.stopPropagation()">
+                    <mat-icon matPrefix>clear_all</mat-icon>
+                    <mat-select formControlName="floor">
+                        <mat-option [value]="-1">Tất cả</mat-option>
+                        <mat-option *ngFor="let floor of floors" [value]="floor.value">{{floor.label}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" (click)="$event.stopPropagation()">
+                    <mat-icon matPrefix>directions</mat-icon>
+                    <mat-select formControlName="direction">
+                        <mat-option [value]="-1">Tất cả</mat-option>
+                        <mat-option *ngFor="let direction of directions" [value]="direction.value">{{direction.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div class="field">Hình thức: </div>
+                    <mat-radio-group class="radio-group" formControlName="form">
+                        <mat-radio-button value="-1" checked>Tất cả</mat-radio-button>
+                        <mat-radio-button value="0">Bán</mat-radio-button>
+                        <mat-radio-button value="1">Cho thuê</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div class="field">Phòng ngủ: </div>
+                    <mat-radio-group class="radio-group" formControlName="numberOfBedRoom">
+                        <mat-radio-button value="-1" checked>Tất cả</mat-radio-button>
+                        <mat-radio-button value="1">1</mat-radio-button>
+                        <mat-radio-button value="2">2</mat-radio-button>
+                        <mat-radio-button value="3">3</mat-radio-button>
+                        <mat-radio-button value="4">4+</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div class="field">Phòng tắm: </div>
+                    <mat-radio-group class="radio-group" formControlName="numberOfBathRoom">
+                        <mat-radio-button value="-1" checked>Tất cả</mat-radio-button>
+                        <mat-radio-button value="1">1</mat-radio-button>
+                        <mat-radio-button value="2">2</mat-radio-button>
+                        <mat-radio-button value="3">3</mat-radio-button>
+                        <mat-radio-button value="4">4+</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </div>
+</form>

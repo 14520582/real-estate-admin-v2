@@ -1,0 +1,17 @@
+::ng-deep #map-container {
+    height: 570px;
+    width: 100%;
+    display: block;
+    margin: 0 16px;
+}
+::ng-deep .state-tooltip {
+    height: 90px;
+    width: 50px;
+    background-color: white
+}
+
+::ng-deep .state-tooltip > h4 {
+    line-height: 40px;
+    font-size: 14px;
+    margin-bottom: 5px;
+}

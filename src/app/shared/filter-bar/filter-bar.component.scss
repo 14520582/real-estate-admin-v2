@@ -1,0 +1,81 @@
+:host ::ng-deep {
+    .container {
+        width: 100%;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-wrapper {
+        margin: 0em 0;
+    }
+    .mat-form-field-infix {
+        border-top: 0em solid transparent;
+    }
+    .mat-form-field-wrapper {
+        padding-bottom: 0em;
+        font-size: 14px;
+    }
+    mat-expansion-panel-header {
+        height: 70px !important;
+    }
+    .mat-content {
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+        flex: 1;
+        height: 70px;
+        flex-direction: row;
+        overflow: hidden;
+    }
+    mat-form-field {
+        margin-right: 16px
+    }
+    .mat-form-field-appearance-outline .mat-form-field-infix {
+        padding: 1em 0 .6em 1em;
+    }
+    .selection-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-right: 16px;
+        mat-slider {
+            margin-right: 2px;
+            margin-left: 2px;
+        }
+    }
+    mat-icon {
+        color: gray
+    }
+    .mat-accent .mat-slider-track-fill, .mat-accent .mat-slider-thumb, .mat-accent .mat-slider-thumb-label {
+        background-color: green;
+
+    }
+    .mat-slider-thumb-label {
+        width: 22px;
+        height: 22px;
+    }
+    .mat-slider-horizontal .mat-slider-thumb-label {
+        top: -30px;
+    }
+    .main-color {
+        color: green;
+    }
+    .radio-group {
+        margin-left: 8px;
+        margin-right: 8px;
+        mat-radio-button {
+            margin-right: 6px;
+        }
+        .mat-radio-label {
+            font-size: 14px;
+        }
+    }
+    .field {
+        font-size: 15px;
+        font-weight: 500
+    }
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+        border-color: #099416;
+    }
+    .mat-radio-button.mat-accent .mat-radio-inner-circle {
+        background-color: #04cc08;
+    }
+}

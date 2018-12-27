@@ -1,0 +1,17 @@
+<div class="section-container" fxLayout="row" PerfectScrollbar>
+  <div fxFlex="25">
+  </div>
+  <div fxFlex="50">
+    <app-news-card *ngFor="let news of newsData" [news]="news"></app-news-card>
+    <div class="paging">
+      <div>
+        <button mat-raised-button (click)="changePage(false)" *ngIf="indexOfPage !== 0">Previous</button>
+      </div>
+      <div>
+        <button mat-raised-button (click)="changePage(true)" *ngIf="indexOfPage !== numOfPage">Next</button>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="25">
+  </div>
+</div>

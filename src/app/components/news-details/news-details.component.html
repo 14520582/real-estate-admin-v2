@@ -1,0 +1,18 @@
+<div *ngIf="news" class="section-container" fxLayout="row" PerfectScrollbar>
+  <div fxFlex="25">
+  </div>
+  <div fxFlex="50">
+    <div class="path">
+      <a href="http://localhost:4200">Trang chủ </a><span> > </span><a [routerLink]="['/news-list/', news.category.label]">{{news.category.name}}</a>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center">
+    <h1 class="title">{{news.title}}</h1>
+    <div>{{news.datecreated | dateCreated}}</div>
+    <h3>{{news.headline}}</h3>
+    <img width="500" src={{news.thumbnail}}>
+    <p>{{news.content}}</p>
+  </div>
+  </div>
+  <div fxFlex="25">
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.paging {
+    margin: 16px;
+    button {
+        background-color: rgba(67,160,71 ,.9);
+        color: white;
+    }
+}
+.section-container {
+    width: 100%
+}
+.paging div {
+    float: left;
+    margin-bottom: 16px;
+}
+.paging div:last-child {
+    float: right;
+    margin-bottom: 16px;
+}

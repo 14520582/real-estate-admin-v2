@@ -1,0 +1,15 @@
+<dx-vector-map id="map-container" [maxZoomFactor]="4" [zoomFactor]="4" [projection]="projection">
+    <dxo-title text="Biến động giá bất động sản khu vực TP. Hồ Chí Minh" subtitle="mỗi mảng màu là một quận, huyện thuộc thành phố"></dxo-title>
+    <dxo-tooltip 
+    [enabled]="true" 
+    [customizeTooltip]="customizeTooltip">
+</dxo-tooltip>
+    <dxo-export [enabled]="true"></dxo-export>
+    <dxi-layer [dataSource]="pangaeaContinents" name="continents" [customize]="customizeLayer">
+        <dxo-label [enabled]="true" dataField="name">
+        </dxo-label>
+    </dxi-layer>
+    <dxi-legend [customizeText]="customizeText">
+            <dxo-source layer="pies" grouping="color"></dxo-source>
+        </dxi-legend>
+</dx-vector-map>

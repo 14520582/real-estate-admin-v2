@@ -1,0 +1,46 @@
+.title{
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 43px;
+    color: rgb(17, 17, 17)
+}
+h3 {
+    font-family: "Noto Serif", serif;
+    font-size: 24px;
+    font-weight: 700;
+    color:rgb(34, 34, 34)
+
+}
+p {
+    font-family: "Noto Serif", serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 8px;
+    color:rgb(34, 34, 34)  
+}
+img {
+    margin: 8px
+}
+.path {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    a {
+        font-family: 'Open Sans', arial, sans-serif;
+        font-size: 12px;
+        color: rgb(39, 38, 38);
+        cursor: pointer;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    span {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+}
+.section-container {
+    width: 100%
+}

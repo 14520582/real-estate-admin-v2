@@ -1,0 +1,56 @@
+.call-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.call {
+    background-color: green;
+    color: antiquewhite;
+}
+.hang-up {
+    background-color: red;
+    color: antiquewhite;
+}
+.close{
+    position: relative;
+    top: -20px;
+    right: -125px;
+}
+.close{
+    position: relative;
+    top: -20px;
+    right: -115px;
+}
+.info {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid black;
+    margin: 16px;
+}
+.blink {
+    -webkit-animation: 1s linear infinite condemned_blink_effect;
+    animation: 1s linear infinite condemned_blink_effect;
+}
+@-webkit-keyframes condemned_blink_effect {
+    0% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+@keyframes condemned_blink_effect {
+    0% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}

@@ -1,0 +1,29 @@
+@import 'src/app/ui-core/scss/p28';
+
+:host {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  z-index: 4;
+  .menu-circle-button {
+    min-width: 50px;
+    height: 64px;
+    cursor: pointer;
+    @include media-breakpoint-down('xs') {
+      height: 56px;
+    }
+  }
+  h1 {
+    cursor: pointer;
+  }
+  .menu-dropdown {
+    margin-left: 16px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .toolbar-bg {
+    background-color: #00c12ae8 !important;
+    color: white;
+  }
+
+}

@@ -1,0 +1,29 @@
+<div class="contain" (click)="goToDetails()" [ngStyle]="{'background-image': getImage()}" fxLayout="row" fxLayoutAlign="start end">
+    <div class="panel-details" fxLayout="column" fxLayoutAlign="space-between start">
+        <h1>{{data.title}}</h1>
+        <h2 class="price">{{data.price | money}}</h2>
+        <div class="address">{{data.address.no}} {{data.address.street}},
+            <span>{{data.address.ward.name}}</span>,
+            <span>{{data.address.district.name}}</span>,
+            <span>{{data.address.city.name}}</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div class="detail" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon>details</mat-icon>
+                <div>{{data.area}} m²</div>
+            </div>
+            <div class="detail" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon>local_hotel</mat-icon>
+                <div>{{data.numofbedroom}}</div>
+            </div>
+            <div class="detail" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon>hot_tub</mat-icon>
+                <div>{{data.numofbathroom}}</div>
+            </div>
+            <div class="detail" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon>directions</mat-icon>
+                <div>{{data.direction | direction}}</div>
+            </div>
+        </div>
+    </div>
+</div>

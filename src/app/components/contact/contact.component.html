@@ -1,0 +1,70 @@
+<div class="section-container" PerfectScrollbar>
+  <form [formGroup]="contactForm" fxLayoutAlign="center center">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div>
+        <h4 class="field">Thông tin liên hệ</h4>
+        <div class="field">
+          Bạn có câu hỏi cần trợ giúp?
+        </div>
+        <div class="field">
+          <p>Tham khảo
+            <span>Những Câu Hỏi Thường Gặp</span>. Nếu không tìm thấy giải đáp cho vấn đề của bạn, liên hệ FindHouse theo
+            thông tin dưới đây:</p>
+        </div>
+        <div class="field">
+          <mat-icon>location_on</mat-icon>
+          <p>Tầng 4, tòa nhà Flemington, 182 Lê Đại Hành , Phường 15, Quận 11, TP. Hồ Chí Minh.</p>
+        </div>
+        <div class="field">
+          <mat-icon>location_on</mat-icon>
+          <p>FindHouse Bạch Đằng, 88 Bạch Đằng, Phường 2, Quận Tân Bình, TP. Hồ Chí Minh - Số nội bộ: 807</p>
+        </div>
+        <div class="field">
+          <mat-icon>phone</mat-icon>
+          <p>(028) 7306 6099</p>
+        </div>
+        <div class="field">
+          <mat-icon>mail</mat-icon>
+          <p>
+            <a>vietnam@findhouse.com</a>
+          </p>
+        </div>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="name" placeholder="Họ và tên">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="phone" placeholder="Số điện thoại">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="email" placeholder="Email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="title" placeholder="Tiêu đề">
+        </mat-form-field>
+        <mat-form-field class="content-area" appearance="outline">
+          <textarea matInput formControlName="description" placeholder="Nội dung" matAutosizeMinRows="5" matTextareaAutosize matAutosizeMaxRows="10"></textarea>
+        </mat-form-field>
+        <div class="btn-container">
+          <button class="comfirm-btn" mat-raised-button color="warn">Gửi thông tin</button>
+        </div>
+        <div class="field">
+          <div>
+            <h4>Truyền Thông - Hợp Tác</h4>
+            <p> FindHouse chào đón mọi email đến từ quý anh chị phóng viên, biên tập viên, blogger hoặc bất kỳ ai quan tâm
+              đến việc kể lại câu chuyên của FindHouse: giao dịch BĐS nay thật dễ dàng, nhanh chóng và tiện lợi nhờ sự kết
+              hợp với công nghệ tiên tiến.
+              <br/> FindHouse hướng đến mục đích đem lại trải nghiệm tốt nhất cho khách hàng sử dụng dịch vụ trên FindHouse.
+              Và mọi việc sẽ dễ dàng hơn nếu FindHouse có được sự hợp tác từ quý doanh nghiệp và đối tác kinh doanh tiềm
+              năng. FindHouse đón chờ quý doanh nghiệp có ý tưởng hợp tác về ứng dụng công nghệ, mở rộng phân khúc khách
+              hàng hoặc bất kỳ đề xuất sáng tạo nào khác.
+            </p>
+            <p> Quý anh chị có nhu cầu đặt lịch phỏng vấn, viết bài hoặc đề xuất hợp tác, vui lòng liên hệ phòng Marketing,
+              email
+              <a>vietnam@findhouse.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

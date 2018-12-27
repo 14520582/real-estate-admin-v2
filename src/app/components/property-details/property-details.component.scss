@@ -1,0 +1,87 @@
+:host ::ng-deep{
+    h1, h2, h3 {
+        margin-top: 0px;
+        font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    agm-map {
+        height: 400px;
+    }
+    .contain {
+        width: 100%;
+    }
+    .main-info {
+        width: 100%;
+        height: 250px;
+        background-color: white
+    }
+    mat-card {
+        padding: 0px;
+    }
+    .details-container {
+        margin: 16px;
+        p {
+            font-size: 18px;
+        }
+    }
+
+    .require-form {
+        .mat-form-field-appearance-outline .mat-form-field-wrapper {
+            margin: 0em 0;
+        }
+        .mat-form-field-infix {
+            border-top: 0em solid transparent;
+        }
+        .mat-form-field-wrapper {
+            padding-bottom: 0em;
+            font-size: 14px;
+        }
+    
+        .mat-form-field-appearance-outline .mat-form-field-infix {
+            padding: 1.3em 0 .9em 0em;
+        }
+    }
+    .form-list {
+        padding: 8px 16px;
+        mat-form-field {
+            width: 100%;
+            margin-bottom: 8px;
+        }
+    }
+    .title-card {
+        text-align: center;
+        font-size: 20px;
+        padding: 8px 0px;
+        color: white;
+        background-color: rgb(51, 51, 51)
+    }
+    .info-icon {
+        color: gray;
+    }
+    .info-text {
+        margin-left: 8px;
+        font-size: 16px;
+        font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .info-item {
+        margin-bottom: 8px;
+        margin-top: 8px;
+    }
+    .address {
+        font-family: Roboto,"Helvetica Neue",sans-serif;
+        margin-top: 3px;
+        font-size: 18px;
+        span {
+            color: rgb(33, 33, 194);
+            cursor: pointer;
+            font-size: 18px;
+            font-family: Roboto,"Helvetica Neue",sans-serif;
+        }
+        span:hover {
+            color: rgb(0, 0, 0);
+            text-decoration: underline;
+        }
+    }
+}

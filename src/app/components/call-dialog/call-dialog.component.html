@@ -1,0 +1,27 @@
+<div class="call-dialog">
+  <div fxLayout="row" class="close">
+    <mat-icon (click)="openConfigurationManager()">settings</mat-icon>
+    <mat-icon (click)="close()">close</mat-icon>
+  </div>
+  <div *ngIf="(UA.status | async) as status" >
+  <div *ngIf="!status.connected" class="info blink">
+    Connecting...
+  </div>
+  <div *ngIf="status.connected" class="call-dialog">
+    <div class="info blink" *ngIf="call.living">
+      Calling...
+    </div>
+    <div class="info" *ngIf="!call.living">
+      Ready
+    </div>
+    <div>
+      <button *ngIf="!call.living" mat-mini-fab class="call" matTooltip="Make a call" (click)="makeCall(status.connected)">
+        <mat-icon>call</mat-icon>
+      </button>
+      <button *ngIf="call.living" mat-mini-fab class="hang-up" matTooltip="Hang up" (click)="hangUp()">
+        <mat-icon>call_end</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+</div>

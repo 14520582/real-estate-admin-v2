@@ -1,0 +1,12 @@
+<div class="container">
+    <h2>{{title}}</h2>
+    <mat-card class="content" fxLayout="row" fxLayoutAlign="space-between center" PerfectScrollbar>
+        <!-- <button fxFlex="2" mat-icon-button>
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button> -->
+        <app-property-card [data]="item" *ngFor="let item of dataSource" style="margin-right: 8px; width: 350px !important"></app-property-card>
+        <!-- <button fxFlex="2" mat-icon-button>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button> -->
+    </mat-card>
+</div>
