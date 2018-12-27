@@ -1,33 +1,39 @@
 <mat-sidenav-container>
     <div id="app-main-content">
         <div id="wrapper">
+            <app-sidebar [name]="'navbar'" [folded]="settings.layout.navigationFolded" [lockedOpen]="'gt-md'" class="left-navbar" [ngClass]="settings.colorClasses.navbar">
+                <app-navbar layout="vertical"></app-navbar>
+            </app-sidebar>
             <div class="content-wrapper">
-                <ng-container *ngIf="settings.layout.toolbar === 'below'">
+                <!-- <ng-container *ngIf="settings.layout.toolbar === 'below'">
                     <app-toolbar class="below" [ngClass]="settings.colorClasses.toolbar"></app-toolbar>
-                </ng-container>
-                <app-content></app-content>
+                </ng-container> -->
+                <!-- <app-content></app-content> -->
                 <ng-container *ngIf="settings.layout.footer === 'below'">
                     <app-footer class="below" [ngClass]="settings.colorClasses.footer"></app-footer>
                 </ng-container>
             </div>
         </div>
         <div class="float-action" [ngClass]="{'expanded': exp.expanded, 'not-expanded': !exp.expanded}" fxLayoutAlign="space-between end">
-            <mat-expansion-panel #exp="matExpansionPanel">
+            <mat-expansion-panel #exp="matExpansionPanel" [disabled]="messageList.length === 0">
                 <mat-expansion-panel-header [expandedHeight]="'48px'">
                     <mat-panel-title>
-                        Nhắn tin cho nhân viên tư vấn
+                        <div *ngFor="let tab of messageList; let i = index" (click)="$event.stopPropagation();changeTab(i)" [ngClass]="{'selected-tab' : selectedTab === i}" class="tab">{{tab.address}}
+                            <mat-icon>close</mat-icon>
+                        </div>
+                        <div *ngIf="messageList.length === 0">Chưa có tin nhắn nào</div>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <div class="chat-panel" fxLayout="column">
+                <div class="chat-panel" fxLayout="column" *ngIf="messageList.length > 0">
                     <div #chatView style="width: 100%; height: 296px;" PerfectScrollbar>
-                        <div *ngFor="let message of messageList">
+                        <div *ngFor="let message of messageList[selectedTab].message">
                             <div *ngIf="message.source !== 'me'" class="message-container" fxLayoutAlign="start start">
                                 <div class="agent-icon">
                                     <mat-icon>person</mat-icon>
                                 </div>
                                 <div class="content">{{message.content}}</div>
                             </div>
-                            <div *ngIf="message.source === 'me'"class="message-container" fxLayoutAlign="end start">
+                            <div *ngIf="message.source === 'me'" class="message-container" fxLayoutAlign="end start">
                                 <div class="my-content">{{message.content}}</div>
                             </div>
                         </div>
@@ -42,7 +48,8 @@
                     </div>
                 </div>
             </mat-expansion-panel>
-            <button mat-fab color="accent" (click)="openCallDialog()"><mat-icon>headset_mic</mat-icon></button>
+            <!-- <button mat-fab color="accent" (click)="openCallDialog()"><mat-icon>headset_mic</mat-icon></button> -->
+
         </div>
     </div>
 </mat-sidenav-container>

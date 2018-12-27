@@ -12,6 +12,7 @@ import {SidebarModule} from '../ui-core/sidebar/sidebar.module';
 import { CallDialogComponent } from '../components/call-dialog/call-dialog.component';
 import { ConfigComponent } from '../components/config/config.component';
 import { AppJssipModule } from '../services/app-jssip/app-jssip.module';
+import { NavbarModule } from './navbar/navbar.module';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AppJssipModule } from '../services/app-jssip/app-jssip.module';
         MatDialogModule,
         FooterModule,
         ToolbarModule,
+        NavbarModule,
         AppJssipModule
     ],
     entryComponents: [CallDialogComponent, ConfigComponent],

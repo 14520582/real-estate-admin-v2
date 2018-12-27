@@ -203,7 +203,7 @@ export class UaService {
                 console.log(event)
                 payload = this._hydratePayload<UAnewMessageData>(event, ['originator', 'session', 'request']);
                 if (payload['originator'] === 'remote') {
-                    this.loggerService.addLog(event.request.body)
+                    this.loggerService.addLog({source: event.request.from._uri._user, content: event.request.body})
                 }
                 break;
             }

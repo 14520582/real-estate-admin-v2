@@ -22,12 +22,10 @@ export class MainComponent implements OnDestroy, OnInit
     onConfigChanged: Subscription;
     settings: any;
     isExpanded = false;
+    selectedTab = 0;
     @HostBinding('attr.app-layout-mode') layoutMode;
     text: FormControl
-    messageList = [{
-        source: 'agent',
-        content: 'Chào bạn đến với FindHouse bạn cần chúng tôi tư vấn gì?'
-    }]
+    messageList = []
     constructor(
         private _renderer: Renderer2,
         private _elementRef: ElementRef,
@@ -72,10 +70,25 @@ export class MainComponent implements OnDestroy, OnInit
           });
           this.loggerService.log.subscribe(message => {
             if(message) {
-                this.messageList.push({source: 'agent', content: message}); 
+                // this.messageList.push({source: 'agent', content: message});
+                let newSource = true;
+                for(let i = 0; i < this.messageList.length; i++) {
+                    if (this.messageList[i].address === message.source) {
+                        this.messageList[i].message.push({source: 'customer', content: message.content})
+                        newSource = false;
+                        break;
+                    }
+                }
+                if (newSource) {
+                    this.messageList.push({address: message.source, message: [{source: 'customer', content: message.content}]});
+                }
                 this.scrollToBottom();
             }
         })
+    }
+    changeTab(index) {
+        this.selectedTab = index;
+        console.log('aa')
     }
     openCallDialog(){
         this.matDialog.open(CallDialogComponent).disableClose = true;
@@ -87,8 +100,8 @@ export class MainComponent implements OnDestroy, OnInit
     }
     sendMessage() {
         if (this.text.value.trim()) {
-            this.messageList.push({source: 'me', content: this.text.value});
-            this.UA.sendMsg('1012', this.text.value);
+            this.messageList[this.selectedTab].message.push({source: 'me', content: this.text.value});
+            this.UA.sendMsg(this.messageList[this.selectedTab].address, this.text.value);
             this.scrollToBottom();
             this.text.setValue('');
         }

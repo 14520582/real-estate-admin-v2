@@ -1,0 +1,25 @@
+<ng-container *ngIf="layout == 'vertical'">
+
+    <div class="navbar-vertical">
+
+        <div class="navbar-header">
+            <button mat-icon-button class="toggle-button-navbar" (click)="toggleSidebarFolded()" fxHide.lt-lg>
+                <mat-icon style="color: white">{{menu}}</mat-icon>
+            </button>
+            <button mat-icon-button class="toggle-button-navbar" (click)="toggleSidebarOpened()" fxHide.gt-md>
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+        <div class="navbar-content" PerfectScrollbar>
+            <app-navigation [navigation]="navigation" layout="vertical"></app-navigation>
+        </div>
+
+    </div>
+
+</ng-container>
+
+<ng-container *ngIf="layout == 'horizontal'">
+    <div class="navbar-horizontal">
+        <app-navigation [navigation]="navigation" layout="horizontal"></app-navigation>
+    </div>
+</ng-container>

@@ -10,6 +10,10 @@
         z-index: 999;
         .mat-expansion-panel-header {
             padding: 0 16px;
+            min-width: 324px;
+        }
+        .mat-expansion-panel-header[aria-disabled='true'] {
+            color: rgb(0, 0, 0);
         }
         .mat-expansion-panel-body {
             padding: 0px;
@@ -28,6 +32,13 @@
     }
     .not-expanded {
         top: calc(100% - 60px);
+    }
+    .tab {
+        cursor: pointer;
+        padding: 0 8px;
+    }
+    .selected-tab {
+        border-bottom: 2px solid green
     }
     .chat-panel {
         height: 332px;
