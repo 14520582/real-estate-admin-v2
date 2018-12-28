@@ -13,6 +13,10 @@ export class AuthService {
   constructor(
     private http: HttpClient
   ) {
+
+    if (localStorage.getItem('userData')) {
+      this.logged.next(true);
+    }
   }
   login(username: string, password: string){
     const body = {

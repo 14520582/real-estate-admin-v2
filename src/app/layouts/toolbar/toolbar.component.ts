@@ -4,6 +4,7 @@ import { ConfigService} from '../../ui-core/services/ui.config.service';
 import { SidebarService} from '../../ui-core/sidebar/sidebar.service';
 import { Store } from '@ngrx/store';
 import * as reducers from '../../ngrx-store/reducers';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
     selector   : 'app-toolbar',
@@ -24,6 +25,7 @@ export class ToolbarComponent
     constructor(
       private router: Router,
       private config: ConfigService,
+      private authService: AuthService,
       private sidebarService: SidebarService,
       private store: Store<reducers.NavBarState>
     )
@@ -55,15 +57,7 @@ export class ToolbarComponent
     }
     logout() {
         localStorage.clear();
+        this.authService.logged.next(false);
         this.router.navigate(['/login/']);
-    }
-    goPropertyList(formSelected) {
-        this.router.navigate(['/properties-list/', {content: 'form:' + formSelected}]);
-    }
-    navigateToNewsList(category) {
-        this.router.navigate(['/news-list/', category]);
-    }
-    navigateToPriceMap() {
-        this.router.navigate(['/price-map/']);  
     }
 }

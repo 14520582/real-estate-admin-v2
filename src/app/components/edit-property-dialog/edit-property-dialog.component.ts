@@ -4,18 +4,17 @@ import { DATA } from '../../common/data'
 import { PropertyService } from '../../services/property.service';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-post-page',
-  templateUrl: './post-page.component.html',
-  styleUrls: ['./post-page.component.scss']
+  selector: 'app-edit-property-dialog',
+  templateUrl: './edit-property-dialog.html',
+  styleUrls: ['./edit-property-dialog.scss']
 })
-export class PostPageComponent implements OnInit {
+export class EditPropertyComponent implements OnInit {
   realEstateForm: FormGroup;
   cities: string[] = DATA.cities;
   districts = [];
   wards = [];
   directions: string[] = DATA.directions;
   floors: string[] = DATA.floors;
-  checked: boolean = true;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -57,44 +56,6 @@ export class PostPageComponent implements OnInit {
     
   }
   submit() {
-    if(this.realEstateForm.valid) {
-      const body = {
-        title: this.realEstateForm.controls['title'].value,
-        price: this.realEstateForm.controls['price'].value,
-        form: this.realEstateForm.controls['form'].value,
-        license: this.realEstateForm.controls['license'].value,
-        address: {
-          city: {
-            id: 1
-          },
-          district: {
-            id: this.realEstateForm.controls['district'].value
-          },
-          ward: {
-            id: this.realEstateForm.controls['ward'].value
-          },
-          no: this.realEstateForm.controls['no'].value,
-          street: this.realEstateForm.controls['street'].value
-        },
-        cover: this.realEstateForm.controls['cover'].value,
-        numofbedroom: this.realEstateForm.controls['numberOfBedRoom'].value,
-        numofbathroom: this.realEstateForm.controls['numberOfBathRoom'].value,
-        phone: this.realEstateForm.controls['phone'].value,
-        nameOfOwner: this.realEstateForm.controls['name'].value,
-        email: this.realEstateForm.controls['email'].value,
-        numoffloor: this.realEstateForm.controls['floor'].value,
-        direction: this.realEstateForm.controls['direction'].value,
-        type: this.realEstateForm.controls['type'].value,
-        height: this.realEstateForm.controls['height'].value,
-        width: this.realEstateForm.controls['width'].value,
-        area: this.realEstateForm.controls['area'].value,
-        description: this.realEstateForm.controls['description'].value,
-      }
-      console.log(body);
-      this.propertyService.createProperty(body).subscribe( res => {
-        this.router.navigate(['/manager-property/'])
-      })
-    }
   }
   ngOnInit() {
   }

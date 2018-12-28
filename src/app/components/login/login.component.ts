@@ -59,9 +59,10 @@ export class LoginComponent implements OnInit
                 )
             )
             .subscribe( res => {
-                // localStorage.setItem('userData', 'aaa');
+                localStorage.setItem('userData', JSON.stringify(res));
+                this.authService.logged.next(true);
                 console.log(res)
-                // this.router.navigate(['/manager-property']);
+                this.router.navigate(['/manager-property']);
             })
         }
     }

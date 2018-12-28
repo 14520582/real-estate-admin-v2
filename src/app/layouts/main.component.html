@@ -14,7 +14,7 @@
                 </ng-container>
             </div>
         </div>
-        <div class="float-action" [ngClass]="{'expanded': exp.expanded, 'not-expanded': !exp.expanded}" fxLayoutAlign="space-between end">
+        <div *ngIf="isLogged" class="float-action" [ngClass]="{'expanded': exp.expanded, 'not-expanded': !exp.expanded}" fxLayoutAlign="space-between end">
             <mat-expansion-panel #exp="matExpansionPanel" [disabled]="messageList.length === 0">
                 <mat-expansion-panel-header [expandedHeight]="'48px'">
                     <mat-panel-title>

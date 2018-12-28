@@ -8,3 +8,22 @@ export interface Call {
     type: string;
 
 }
+export class Utils {
+    static currentFullUser: any;
+  
+    static getFullCurrentUser() {
+      if (!Utils.currentFullUser) {
+        Utils.currentFullUser = JSON.parse(localStorage.getItem('userData'));
+      }
+      return Utils.currentFullUser;
+    }
+  
+  
+    static getCurrentToken() {
+      const data = Utils.getFullCurrentUser();
+      if (data) {
+        return data.token;
+      }
+      return null;
+    }
+}

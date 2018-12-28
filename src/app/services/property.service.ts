@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
  
 import { Observable } from 'rxjs/Observable';
 import { API } from '../common/api';
 import { CONSTANT } from '../common/constant';
+import { Utils } from '../common/core-utils';
 
 @Injectable()
 export class PropertyService {
@@ -11,6 +12,25 @@ export class PropertyService {
   constructor(
     private http: HttpClient,
   ) {
+  }
+  createProperty(body): Observable<any[]> {
+    body['account'] = {id: Utils.getFullCurrentUser().id}
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Token': Utils.getCurrentToken()
+      })
+    };
+    return this.http.post<any>(API.API_PROPERTY + '/add', body, httpOptions);
+  }
+  updateProperty(body): Observable<any[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Token': Utils.getCurrentToken()
+      })
+    };
+    return this.http.put<any>(API.API_PROPERTY + '/update', body, httpOptions);
   }
   getAllData(): Observable<any[]> {
     return this.http.get<any[]>(API.API_PROPERTY + '/get/new?limit='+ CONSTANT.CAROUSEL_SIZE);
