@@ -1,7 +1,7 @@
 <mat-sidenav-container>
     <div id="app-main-content">
         <div id="wrapper">
-            <app-sidebar [name]="'navbar'" [folded]="settings.layout.navigationFolded" [lockedOpen]="'gt-md'" class="left-navbar" [ngClass]="settings.colorClasses.navbar">
+            <app-sidebar *ngIf="isLogged" [name]="'navbar'" [folded]="settings.layout.navigationFolded" [lockedOpen]="'gt-md'" class="left-navbar" [ngClass]="settings.colorClasses.navbar">
                 <app-navbar layout="vertical"></app-navbar>
             </app-sidebar>
             <div class="content-wrapper">

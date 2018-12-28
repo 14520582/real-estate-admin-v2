@@ -19,7 +19,7 @@ export const navigation = [
         'title': 'Tin Tức',
         'type': 'item',
         'icon': 'receipt',
-        'url': 'reports',
+        'url': 'news-manager',
         'rbac': 'Report',
         'tooltip': 'Reports'
       },

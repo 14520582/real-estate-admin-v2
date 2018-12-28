@@ -1,0 +1,34 @@
+<div class="contain-home">
+  <div style="margin-top: 6px;" fxLayoutAlign="space-between center">
+    <div>
+      <mat-form-field style="width: 350px" appearance="outline">
+        <input matInput placeholder="Tra cứu" [(ngModel)]="searchText">
+        <mat-icon matPrefix>search</mat-icon>
+        <button mat-button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field style="width: 200px" appearance="outline">
+        <mat-label>Loại tin tức</mat-label>
+        <mat-select placeholder="Chọn loại tin tức" disableOptionCentering [formControl]="type">
+          <mat-option *ngFor="let item of newsTypes" [value]="item.value">
+            {{item.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-paginator [length]="totalOfItems" [pageSize]="pageSize" (page)="onPaginateChange($event)">
+    </mat-paginator>
+  </div>
+  <div style="height: calc(100vh - 125px);" PerfectScrollbar>
+    <div *ngIf="totalOfItems > 0;else noResult" fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <app-news-card *ngFor="let news of newsData" fxFlex="50" [news]="news"></app-news-card>
+    </div>
+    <ng-template #noResult>
+      <div class="empty" fxLayout="column" fxLayoutAlign="center center">
+        <h2>Result not found</h2>
+      </div>
+    </ng-template>
+  </div>
+</div>

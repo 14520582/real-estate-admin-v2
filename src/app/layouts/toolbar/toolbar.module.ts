@@ -9,7 +9,8 @@ import {
   MatProgressBarModule,
   MatToolbarModule,
   MatDividerModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatTooltipModule
 } from '@angular/material';
 import { ToolbarComponent } from './toolbar.component';
 import { SharedModule} from '../../ui-core/shared.module';
@@ -26,19 +27,12 @@ import { AvatarModule } from 'ngx-avatar';
     ],
     imports     : [
         RouterModule,
-        MatFormFieldModule,
         MatButtonModule,
         MatIconModule,
         MatMenuModule,
-        MatProgressBarModule,
         MatToolbarModule,
+        MatTooltipModule,
         SharedModule,
-        SearchBarModule,
-        ShortcutsModule,
-        MatInputModule,
-        AvatarModule,
-        MatDividerModule,
-        MatBadgeModule
     ],
     exports     : [
         ToolbarComponent

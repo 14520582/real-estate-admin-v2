@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Animations } from '../../ui-core/animations/aminations';
 import { ConfigService} from '../../ui-core/services/ui.config.service';
 import {Router} from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 
 @Component({
@@ -15,10 +18,11 @@ export class LoginComponent implements OnInit
 {
     loginForm: FormGroup;
     loginFormErrors: any;
-
+    error: string;
     constructor(
       private config: ConfigService,
       private router: Router,
+      private authService: AuthService,
       private formBuilder: FormBuilder
     ) {
       this.config.setConfig({
@@ -46,9 +50,20 @@ export class LoginComponent implements OnInit
         });
     }
     login() {
-        localStorage.setItem('userData', 'aaa');
-        console.log('aa')
-        this.router.navigate(['/manager-property']);
+        if (this.loginForm.valid) {
+            this.authService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).pipe(
+                catchError ( err => {
+                        this.error = 'Tài khoản và mật khẩu không chính xác!'
+                        return throwError(err)
+                    }
+                )
+            )
+            .subscribe( res => {
+                // localStorage.setItem('userData', 'aaa');
+                console.log(res)
+                // this.router.navigate(['/manager-property']);
+            })
+        }
     }
     onLoginFormValuesChanged() {
         for ( const field in this.loginFormErrors )

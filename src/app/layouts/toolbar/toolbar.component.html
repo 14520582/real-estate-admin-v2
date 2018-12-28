@@ -4,18 +4,15 @@
       <h1 (click)="goHome()" style="margin-left: 8px">FindHouse</h1>
     </div>
     <div fxLayout="row" fxLayoutAlign="start center">
-      <button style="padding: 0px 0px;" mat-raised-button [routerLink]="['/post']">
-        Đăng tin
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon style="color: white;">add</mat-icon>
       </button>
-      <button class="menu-circle-button">
-        <div fxLayout="row" fxLayoutAlign="center center">
-          <mat-icon style="color: white;">gavel</mat-icon>
-        </div>
-      </button>
-      <button class="menu-circle-button">
-        <div fxLayout="row" fxLayoutAlign="center center">
-          <ngx-avatar class="mr-8" name="Nghia Tran" size="35" bgColor="#7f8c8d"></ngx-avatar>
-        </div>
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+            <button mat-menu-item  [routerLink]="['/post-property']">Thêm bất động sản</button>
+            <button mat-menu-item>Thêm tin tức</button>
+        </mat-menu>
+      <button mat-icon-button matTooltip="Đăng xuất">
+        <mat-icon style="color: white;" (click)="logout()">exit_to_app</mat-icon>
       </button>
     </div>
   </div>

@@ -23,7 +23,7 @@ export class ManagerPropertyComponent implements OnInit {
   ) {
   }
   onPaginateChange(event: PageEvent) {
-    // this.loadData(event.pageIndex);
+    this.loadData(event.pageIndex);
   }
   ngOnInit() {
     this.route.params.subscribe( params => {

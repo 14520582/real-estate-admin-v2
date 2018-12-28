@@ -17,6 +17,7 @@ import { ConfigurationService } from './services/app-jssip/services/configuratio
 import { NewsService } from './services/news.service';
 import { LoggerService } from './services/app-jssip/services/logger.service';
 import { LoadGuardService} from './components/login/can-load.service';
+import { AuthService } from './services/auth.service';
 
 const appRoutes: Routes = [
   {
@@ -25,8 +26,17 @@ const appRoutes: Routes = [
     canLoad: [LoadGuardService],
   },
   {
+    path: 'news-manager',
+    loadChildren: './components/news-manage/news-manage.module#NewsManagerModule',
+    canLoad: [LoadGuardService],
+  },
+  {
     path: 'login',
     loadChildren: './components/login/login.module#LoginModule'
+  },
+  {
+    path: 'post-property',
+    loadChildren: './components/post-page/post-page.module#PostPageModule'
   },
   {
     path: '**',
@@ -55,6 +65,7 @@ const appRoutes: Routes = [
     providers: [
       PropertyService,
       NewsService,
+      AuthService,
       LoadGuardService,
       LoggerService,
       { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig },

@@ -1,5 +1,10 @@
-<mat-card fxLayout="row">
-  <div class="thumbnail">
+<mat-card>
+  <div fxLayout="row"  fxLayoutAlign="start center">
+      <img height="180" width="180" src={{news.thumbnail}}>
+      <div>{{news.title}}</div>
+  </div>
+  <div></div>
+  <!-- <div class="thumbnail">
     <h1 (click)="goToDetails()">
       <img height="180" width="180" src={{news.thumbnail}}>
     </h1>
@@ -10,5 +15,5 @@
     </h1>
     <mat-card-subtitle>{{news.datecreated | dateCreated}}</mat-card-subtitle>
     <mat-card-subtitle class="head-line">{{news.headline}}</mat-card-subtitle>
-  </div>
+  </div> -->
 </mat-card>

@@ -53,6 +53,10 @@ export class ToolbarComponent
     goHome() {
         this.router.navigate(['/'])
     }
+    logout() {
+        localStorage.clear();
+        this.router.navigate(['/login/']);
+    }
     goPropertyList(formSelected) {
         this.router.navigate(['/properties-list/', {content: 'form:' + formSelected}]);
     }

@@ -10,6 +10,7 @@ import { LoggerService } from '../services/app-jssip/services/logger.service';
 import { UaService } from '../services/app-jssip/services/ua.service';
 import { ConfigurationStoreService } from '../services/app-jssip/services/configuration-store.service';
 import { ConfigurationService } from '../services/app-jssip/services/configuration.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
     selector     : 'app-main',
@@ -24,14 +25,16 @@ export class MainComponent implements OnDestroy, OnInit
     isExpanded = false;
     selectedTab = 0;
     @HostBinding('attr.app-layout-mode') layoutMode;
-    text: FormControl
-    messageList = []
+    text: FormControl;
+    messageList = [];
+    isLogged = false;
     constructor(
         private _renderer: Renderer2,
         private _elementRef: ElementRef,
         private matDialog: MatDialog,
         private config: ConfigService,
         private platform: Platform,
+        private authService: AuthService,
         public loggerService: LoggerService,
         private configuration: ConfigurationService,
         public configDialog: MatDialog,
@@ -54,6 +57,9 @@ export class MainComponent implements OnDestroy, OnInit
             this.document.body.className += ' is-mobile';
         }
         this.text = new FormControl();
+        this.authService.logged.subscribe( logged => {
+            this.isLogged = logged;
+        })
     }
     scrollToBottom(): void {
         try {
