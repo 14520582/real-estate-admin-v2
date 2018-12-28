@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { DATA } from '../../common/data'
 import { PropertyService } from '../../services/property.service';
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-edit-property-dialog',
-  templateUrl: './edit-property-dialog.html',
-  styleUrls: ['./edit-property-dialog.scss']
+  templateUrl: './edit-property-dialog.component.html',
+  styleUrls: ['./edit-property-dialog.component.scss']
 })
 export class EditPropertyComponent implements OnInit {
   realEstateForm: FormGroup;
@@ -17,35 +18,80 @@ export class EditPropertyComponent implements OnInit {
   floors: string[] = DATA.floors;
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
+    private dialogRef: MatDialogRef<EditPropertyComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private propertyService: PropertyService
   ) {
-    this.realEstateForm = this.formBuilder.group({
-      form: [0, Validators.required],
-      type: [0, Validators.required],
-      city: [1, Validators.required],
-      district: [null, Validators.required],
-      ward: [null, Validators.required],
-      no: ['', Validators.required],
-      street: ['', Validators.required],
-      cover: ['', Validators.required],
-      description: ['', Validators.required],
-      name: ['', Validators.required],
-      phone: ['', Validators.required],
-      email: ['', Validators.required],
-      license: [0, Validators.required],
-      price: [0, Validators.required],
-      area: ['', Validators.required],
-      height: ['', Validators.required],
-      width: ['', Validators.required],
-      floor: ['', Validators.required],
-      title: ['', Validators.required],
-      direction: ['', Validators.required],
-      numberOfBedRoom: ['', Validators.required],
-      numberOfBathRoom: ['', Validators.required]
-    });
     this.propertyService.getDistrictByCity(1).subscribe(dis => {
       this.districts = dis;
+    })
+    
+  }
+  submit() {
+    if(this.realEstateForm.valid) {
+      const body = {
+        title: this.realEstateForm.controls['title'].value,
+        price: this.realEstateForm.controls['price'].value,
+        form: this.realEstateForm.controls['form'].value,
+        license: this.realEstateForm.controls['license'].value,
+        address: {
+          city: {
+            id: 1
+          },
+          district: {
+            id: this.realEstateForm.controls['district'].value
+          },
+          ward: {
+            id: this.realEstateForm.controls['ward'].value
+          },
+          no: this.realEstateForm.controls['no'].value,
+          street: this.realEstateForm.controls['street'].value
+        },
+        cover: this.realEstateForm.controls['cover'].value,
+        numofbedroom: this.realEstateForm.controls['numberOfBedRoom'].value,
+        numofbathroom: this.realEstateForm.controls['numberOfBathRoom'].value,
+        phone: this.realEstateForm.controls['phone'].value,
+        nameOfOwner: this.realEstateForm.controls['name'].value,
+        email: this.realEstateForm.controls['email'].value,
+        numoffloor: this.realEstateForm.controls['floor'].value,
+        direction: this.realEstateForm.controls['direction'].value,
+        type: this.realEstateForm.controls['type'].value,
+        height: this.realEstateForm.controls['height'].value,
+        width: this.realEstateForm.controls['width'].value,
+        area: this.realEstateForm.controls['area'].value,
+        description: this.realEstateForm.controls['description'].value,
+      }
+      console.log(body);
+      this.dialogRef.close(body);
+    }
+  }
+  ngOnInit() {
+    this.realEstateForm = this.formBuilder.group({
+      form: [this.data.item.form, Validators.required],
+      type: [this.data.item.type, Validators.required],
+      city: [this.data.item.address.city.id, Validators.required],
+      district: [this.data.item.address.district.id, Validators.required],
+      ward: [this.data.item.address.ward.id, Validators.required],
+      no: [this.data.item.address.no, Validators.required],
+      street: [this.data.item.address.street, Validators.required],
+      cover: [this.data.item.cover, Validators.required],
+      description: [this.data.item.description, Validators.required],
+      name: [this.data.item.nameOfOwner, Validators.required],
+      phone: [this.data.item.phone, Validators.required],
+      email: [this.data.item.email, Validators.required],
+      license: [this.data.item.license, Validators.required],
+      price: [this.data.item.price, Validators.required],
+      area: [this.data.item.area, Validators.required],
+      height: [this.data.item.height, Validators.required],
+      width: [this.data.item.width, Validators.required],
+      floor: [this.data.item.numoffloor, Validators.required],
+      title: [this.data.item.title, Validators.required],
+      direction: [this.data.item.direction, Validators.required],
+      numberOfBedRoom: [this.data.item.numofbedroom, Validators.required],
+      numberOfBathRoom: [this.data.item.numofbathroom, Validators.required]
+    });
+    this.propertyService.getWardByDistrict(this.realEstateForm.controls['district'].value).subscribe( w => {
+      this.wards = w;
     })
     this.realEstateForm.controls['district'].valueChanges.subscribe(data => {
       this.propertyService.getWardByDistrict(data).subscribe( w => {
@@ -53,10 +99,8 @@ export class EditPropertyComponent implements OnInit {
         this.realEstateForm.controls['ward'].setValue(null)
       })
     })
-    
   }
-  submit() {
-  }
-  ngOnInit() {
+  close() {
+    this.dialogRef.close();
   }
 }

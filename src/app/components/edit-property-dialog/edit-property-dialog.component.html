@@ -1,155 +1,161 @@
-<div PerfectScrollbar fxLayoutAlign="center start">
-  <form [formGroup]="realEstateForm" fxLayout="column" fxLayoutAlign="center center">
-    <div class="row" fxLayout="row" fxLayoutAlign="start center">
-      <div class="number">1</div>
-      <div class="category">Nhu cầu của bạn:</div>
-      <mat-radio-group class="radio-group" formControlName="form">
-        <mat-radio-button checked value="0">Bán</mat-radio-button>
-        <mat-radio-button value="1">Cho thuê</mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start center">
-      <div class="number">2</div>
-      <div class="category">Hình ảnh (URL):</div>
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Đường dẫn ảnh" formControlName="cover">
-      </mat-form-field>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start center">
-      <div class="number">3</div>
-      <div class="category">Tiêu đề:</div>
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Nhập tiêu đề" formControlName="title">
-      </mat-form-field>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start start">
-      <div class="number">4</div>
-      <div class="category">Miêu tả: </div>
-      <mat-form-field style="width: 400px" appearance="outline">
-        <textarea style="height: 100px" matInput placeholder="Nhập miêu tả" formControlName="description"></textarea>
-      </mat-form-field>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start center">
-      <div class="number">5</div>
-      <div class="category">Loại bất động sản:</div>
-      <mat-radio-group class="radio-group" formControlName="type">
-        <mat-radio-button checked value="0">Nhà riêng</mat-radio-button>
-        <mat-radio-button value="1">{{realEstateForm.controls['form'].value == 0 ? "Đất nền" : "Mặt bằng"}}</mat-radio-button>
-        <mat-radio-button value="2">Chung cư</mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start start">
-      <div class="number">6</div>
-      <div class="category">Địa chỉ:</div>
-      <div>
-        <div fxLayout="row">
-          <mat-form-field appearance="outline">
-            <mat-select formControlName="city">
-              <mat-option *ngFor="let city of cities" [value]="city.id">{{city.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-select formControlName="district" placeholder="Chọn quận/huyện">
-              <mat-option *ngFor="let district of districts" [value]="district.id">{{district.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-select formControlName="ward" placeholder="Chọn phường/xã">
-              <mat-option *ngFor="let ward of wards" [value]="ward.id">{{ward.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div fxLayout="row" style="margin-top: 8px;">
-          <mat-form-field appearance="outline">
-            <input matInput placeholder="Số nhà" formControlName="no">
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <input matInput placeholder="Đường" formControlName="street">
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start center">
-      <div class="number">7</div>
-      <div class="category">Diện tích:</div>
-        <mat-form-field appearance="outline" style="width: 100px">
-          <input matInput formControlName="area">
-          <span matSuffix>m²</span>
-        </mat-form-field>
-      <div style="margin-left: 8px; margin-right: 8px">Dài</div>
-      <mat-form-field appearance="outline" style="width: 100px">
-        <input matInput formControlName="height">
-        <span matSuffix>m</span>
-      </mat-form-field>
-      <div style="margin-left: 8px; margin-right: 8px">Rộng</div>
-      <mat-form-field appearance="outline" style="width: 100px">
-        <input matInput formControlName="width">
-        <span matSuffix>m</span>
-      </mat-form-field>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start start">
-      <div class="number">8</div>
-      <div class="category">Giấy chủ quyền:</div>
-      <mat-radio-group class="radio-group" formControlName="license">
-        <mat-radio-button checked value="0">Sổ đỏ</mat-radio-button>
-        <mat-radio-button value="1">Sổ hồng</mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start center">
-      <div class="number">9</div>
-      <div class="category">Họ tên:</div>
-      <mat-form-field appearance="outline">
-        <input matInput formControlName="name">
-      </mat-form-field>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start center">
-      <div class="number">10</div>
-      <div class="category">Điện thoại:</div>
-      <mat-form-field appearance="outline">
-        <input matInput formControlName="phone">
-      </mat-form-field>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start center">
-      <div class="number">11</div>
-      <div class="category">Email:</div>
-      <mat-form-field appearance="outline">
-        <input matInput formControlName="email">
-      </mat-form-field>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start start">
-      <div class="number">12</div>
-      <div class="category">Thông tin mở rộng:</div>
-      <div>
-        <div fxLayout="row">
-          <mat-form-field appearance="outline">
-            <input matInput placeholder="Số tầng" formControlName="floor">
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-select placeholder="Hướng" formControlName="direction">
-              <mat-option *ngFor="let direction of directions" [value]="direction.value">{{direction.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div fxLayout="row" style="margin-top: 8px;">
-          <mat-form-field appearance="outline">
-            <input matInput placeholder="Số phòng tắm" formControlName="numberOfBedRoom">
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <input matInput placeholder="Số phòng ngủ" formControlName="numberOfBathRoom">
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-    <div class="row" fxLayout="row" fxLayoutAlign="start start">
-      <div class="number">13</div>
-      <div class="category">Giá (Đơn vị ngìn đồng):</div>
-      <div>
-        <mat-form-field appearance="outline">
-          <input matInput placeholder="Nhập giá" formControlName="price">
-        </mat-form-field>
-        <div style="font-size: 16px; font-weight: 500;">{{realEstateForm.controls['price'].value | money}}</div>
-      </div>
-    </div>
-    <button class="comfirm-btn" mat-raised-button color="warn" (click)="submit()">Đăng tải</button>
-  </form>
+<div>
+  <div style="height: calc(100vh - 200px);" PerfectScrollbar>
+      <form [formGroup]="realEstateForm" fxLayout="column" fxLayoutAlign="center center">
+          <div class="row" fxLayout="row" fxLayoutAlign="start center">
+            <div class="number">1</div>
+            <div class="category">Nhu cầu của bạn:</div>
+            <mat-radio-group class="radio-group" formControlName="form">
+              <mat-radio-button checked value="0">Bán</mat-radio-button>
+              <mat-radio-button value="1">Cho thuê</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start center">
+            <div class="number">2</div>
+            <div class="category">Hình ảnh (URL):</div>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Đường dẫn ảnh" formControlName="cover">
+            </mat-form-field>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start center">
+            <div class="number">3</div>
+            <div class="category">Tiêu đề:</div>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Nhập tiêu đề" formControlName="title">
+            </mat-form-field>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start start">
+            <div class="number">4</div>
+            <div class="category">Miêu tả: </div>
+            <mat-form-field style="width: 400px" appearance="outline">
+              <textarea style="height: 100px" matInput placeholder="Nhập miêu tả" formControlName="description"></textarea>
+            </mat-form-field>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start center">
+            <div class="number">5</div>
+            <div class="category">Loại bất động sản:</div>
+            <mat-radio-group class="radio-group" formControlName="type">
+              <mat-radio-button checked value="0">Nhà riêng</mat-radio-button>
+              <mat-radio-button value="1">{{realEstateForm.controls['form'].value == 0 ? "Đất nền" : "Mặt bằng"}}</mat-radio-button>
+              <mat-radio-button value="2">Chung cư</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start start">
+            <div class="number">6</div>
+            <div class="category">Địa chỉ:</div>
+            <div>
+              <div fxLayout="row">
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="city">
+                    <mat-option *ngFor="let city of cities" [value]="city.id">{{city.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="district" placeholder="Chọn quận/huyện">
+                    <mat-option *ngFor="let district of districts" [value]="district.id">{{district.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="ward" placeholder="Chọn phường/xã">
+                    <mat-option *ngFor="let ward of wards" [value]="ward.id">{{ward.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" style="margin-top: 8px;">
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Số nhà" formControlName="no">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Đường" formControlName="street">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start center">
+            <div class="number">7</div>
+            <div class="category">Diện tích:</div>
+              <mat-form-field appearance="outline" style="width: 100px">
+                <input matInput formControlName="area">
+                <span matSuffix>m²</span>
+              </mat-form-field>
+            <div style="margin-left: 8px; margin-right: 8px">Dài</div>
+            <mat-form-field appearance="outline" style="width: 100px">
+              <input matInput formControlName="height">
+              <span matSuffix>m</span>
+            </mat-form-field>
+            <div style="margin-left: 8px; margin-right: 8px">Rộng</div>
+            <mat-form-field appearance="outline" style="width: 100px">
+              <input matInput formControlName="width">
+              <span matSuffix>m</span>
+            </mat-form-field>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start start">
+            <div class="number">8</div>
+            <div class="category">Giấy chủ quyền:</div>
+            <mat-radio-group class="radio-group" formControlName="license">
+              <mat-radio-button checked value="0">Sổ đỏ</mat-radio-button>
+              <mat-radio-button value="1">Sổ hồng</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start center">
+            <div class="number">9</div>
+            <div class="category">Họ tên:</div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="name">
+            </mat-form-field>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start center">
+            <div class="number">10</div>
+            <div class="category">Điện thoại:</div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="phone">
+            </mat-form-field>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start center">
+            <div class="number">11</div>
+            <div class="category">Email:</div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="email">
+            </mat-form-field>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start start">
+            <div class="number">12</div>
+            <div class="category">Thông tin mở rộng:</div>
+            <div>
+              <div fxLayout="row">
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Số tầng" formControlName="floor">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-select placeholder="Hướng" formControlName="direction">
+                    <mat-option *ngFor="let direction of directions" [value]="direction.value">{{direction.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" style="margin-top: 8px;">
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Số phòng tắm" formControlName="numberOfBedRoom">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Số phòng ngủ" formControlName="numberOfBathRoom">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row" fxLayout="row" fxLayoutAlign="start start">
+            <div class="number">13</div>
+            <div class="category">Giá (Đơn vị ngìn đồng):</div>
+            <div>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="Nhập giá" formControlName="price">
+              </mat-form-field>
+              <div style="font-size: 16px; font-weight: 500;">{{realEstateForm.controls['price'].value | money}}</div>
+            </div>
+          </div>
+        </form>
+  </div>
+
+  <div fxLayoutAlign="end start">
+      <button class="comfirm-btn" mat-raised-button (click)="close()">Đóng</button>
+    <button class="comfirm-btn" mat-raised-button color="warn" (click)="submit()">Lưu</button>
+  </div>
 </div>

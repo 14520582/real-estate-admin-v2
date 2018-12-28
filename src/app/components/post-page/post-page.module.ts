@@ -1,6 +1,6 @@
 import  {NgModule} from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
-import {  MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatRadioModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
+import {  MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatRadioModule, MatSelectModule, MatCheckboxModule, MatSnackBarModule } from '@angular/material';
 import { SharedModule } from "../../ui-core/shared.module";
 import { PostPageComponent } from "./post-page.component";
 
@@ -20,6 +20,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,

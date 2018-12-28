@@ -13,7 +13,7 @@ export class PropertyService {
     private http: HttpClient,
   ) {
   }
-  createProperty(body): Observable<any[]> {
+  createProperty(body): Observable<any> {
     body['account'] = {id: Utils.getFullCurrentUser().id}
     const httpOptions = {
       headers: new HttpHeaders({
@@ -23,7 +23,7 @@ export class PropertyService {
     };
     return this.http.post<any>(API.API_PROPERTY + '/add', body, httpOptions);
   }
-  updateProperty(body): Observable<any[]> {
+  updateProperty(body): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -31,6 +31,14 @@ export class PropertyService {
       })
     };
     return this.http.put<any>(API.API_PROPERTY + '/update', body, httpOptions);
+  }
+  deleteProperty(id): Observable<any[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Token': Utils.getCurrentToken()
+      })
+    };
+    return this.http.delete<any>(API.API_PROPERTY + '/delete/' + id, httpOptions);
   }
   getAllData(): Observable<any[]> {
     return this.http.get<any[]>(API.API_PROPERTY + '/get/new?limit='+ CONSTANT.CAROUSEL_SIZE);
@@ -43,6 +51,9 @@ export class PropertyService {
   }
   filter(content: string, page: number): Observable<any> {
     return this.http.get<any>(API.API_PROPERTY + '/get/filter?page=' + page + '&pagesize=' + CONSTANT.PAGE_SIZE_FILTER + '&content=' + content);
+  }
+  filterByText(content: number, page: number): Observable<any> {
+    return this.http.get<any>(API.API_PROPERTY + '/get/byText?page=' + page + '&pagesize=' + CONSTANT.PAGE_SIZE_FILTER + '&id=' + content);
   }
   upTown(page: number): Observable<any> {
     return this.http.get<any>(API.API_PROPERTY + '/get/uptown?page=' + page + '&pagesize=' + CONSTANT.PAGE_SIZE_FILTER);

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { DATA } from '../../common/data'
 import { PropertyService } from '../../services/property.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-post-page',
   templateUrl: './post-page.component.html',
@@ -19,6 +20,7 @@ export class PostPageComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    public snackBar: MatSnackBar,
     private propertyService: PropertyService
   ) {
     this.realEstateForm = this.formBuilder.group({
@@ -92,6 +94,9 @@ export class PostPageComponent implements OnInit {
       }
       console.log(body);
       this.propertyService.createProperty(body).subscribe( res => {
+        this.snackBar.open('Đăng thành công', '', {
+          duration: 2000,
+        });
         this.router.navigate(['/manager-property/'])
       })
     }

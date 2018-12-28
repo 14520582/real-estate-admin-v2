@@ -31,9 +31,7 @@ export class DATA {
       ];
     
     public static cities: any[] = [
-        {id: 1, name: 'Hồ Chí Minh'}, 
-        {id: 2, name: 'Hà Nội'},
-        {id: 3,name: 'Đà Nẵng'}
+        {id: 1, name: 'Hồ Chí Minh'}
     ];
     
     public static wards: string[] = [

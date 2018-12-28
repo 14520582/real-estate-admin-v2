@@ -24,5 +24,5 @@ import { EditPropertyComponent } from "./edit-property-dialog.component";
     EditPropertyComponent
   ]
 })
-export class PostPageModule {
+export class EditPropertyModule {
 }

@@ -1,9 +1,9 @@
-<div class="contain" (click)="goToDetails()" [ngStyle]="{'background-image': getImage()}" fxLayout="column" fxLayoutAlign="space-between start">
+<div class="contain" [ngStyle]="{'background-image': getImage()}" fxLayout="column" fxLayoutAlign="space-between start">
     <div class="header" fxLayoutAlign="space-between center">
         <h1>#{{data.id}}</h1>
         <div class="actions" fxLayoutAlign="start center">
-            <mat-icon>edit</mat-icon>
-            <mat-icon>delete</mat-icon>
+            <mat-icon (click)="editItem()">edit</mat-icon>
+            <mat-icon (click)="deleteItem()">delete</mat-icon>
         </div>
     </div>
     <div class="panel-details" fxLayout="column" fxLayoutAlign="space-between start">
