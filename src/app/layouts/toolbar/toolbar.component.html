@@ -9,7 +9,7 @@
       </button>
       <mat-menu #menu="matMenu" [overlapTrigger]="false">
             <button mat-menu-item  [routerLink]="['/post-property']">Thêm bất động sản</button>
-            <button mat-menu-item>Thêm tin tức</button>
+            <button mat-menu-item [routerLink]="['/news-details']">Thêm tin tức</button>
         </mat-menu>
       <button mat-icon-button matTooltip="Đăng xuất">
         <mat-icon style="color: white;" (click)="logout()">exit_to_app</mat-icon>

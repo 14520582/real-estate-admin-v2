@@ -28,7 +28,7 @@ export const navigation = [
         'title': 'Giá Bất Động Sản Khu Vực',
         'type': 'item',
         'icon': 'assessment',
-        'url': 'recordings',
+        'url': 'price-page',
         'rbac': 'Recordings',
         'tooltip': 'Recordings'
 
@@ -41,16 +41,16 @@ export const navigation = [
         'url': 'agent-scorecards',
         'rbac': 'Evaluation',
         'tooltip': 'Agent Scorecards'
-      },
-      {
-        'id': 'agents-scorecard',
-        'title': 'Thông tin khách hàng',
-        'type': 'item',
-        'icon': 'assignment_ind',
-        'url': 'agent-scorecards',
-        'rbac': 'Evaluation',
-        'tooltip': 'Agent Scorecards'
       }
+      // {
+      //   'id': 'agents-scorecard',
+      //   'title': 'Thông tin khách hàng',
+      //   'type': 'item',
+      //   'icon': 'assignment_ind',
+      //   'url': 'agent-scorecards',
+      //   'rbac': 'Evaluation',
+      //   'tooltip': 'Agent Scorecards'
+      // }
     ]
   },
   {

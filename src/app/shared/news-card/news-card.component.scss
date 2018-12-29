@@ -1,29 +1,46 @@
-mat-card {
-    margin: 8px;
-}
-.mat-card {
-    padding: 8px !important;
-}
-.mat-card-title {
-    font-size: 20px;
-    font-weight: 500;
-}
-.head-line {
-    font-size: 16px;
-    font-weight: 400;
-    color: black
-}
-.thumbnail{
-    margin-right: 16px;
-    height: 180px;
-    width: 180px;
-}
-h1 {
-    margin-top: 0px;
-    cursor: pointer;
-}
-h1:hover {
-    color: blue;
-    text-decoration-color: blue;
-    text-decoration-line: underline;
+:host ::ng-deep {
+    mat-card {
+        margin: 8px;
+    }
+    .mat-card:hover {
+        .actions {
+            visibility: visible !important; 
+        }
+    }
+    .mat-card {
+        padding: 8px !important;
+    }
+    .head-line {
+        font-size: 16px;
+        font-weight: 400;
+        color: black
+    }
+    .actions {
+        border-radius: 25px;
+        height: 25px;
+        padding: 0 8px;
+        width: fit-content;
+        background-color: #f5f5f5;
+        visibility: hidden !important;
+        box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+          mat-icon {
+            color: #818181;
+            min-width: 16px;
+            min-height: 16px;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            font-size: 16px;
+          }
+    }
+    .title {
+        font-weight: 500;
+        font-size: 15px
+    }
+    .thumbnail{
+        margin-right: 16px;
+        height: 150px;
+        width: 150px;
+    }
 }

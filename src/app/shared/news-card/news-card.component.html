@@ -1,19 +1,12 @@
-<mat-card>
-  <div fxLayout="row"  fxLayoutAlign="start center">
-      <img height="180" width="180" src={{news.thumbnail}}>
-      <div>{{news.title}}</div>
+<mat-card class="container" fxLayout="row"  fxLayoutAlign="start start">
+  <img class="thumbnail" src={{news.thumbnail}}>
+  <div class="details">
+      <div class="title">{{news.title}}</div>
+      <div>{{news.datecreated | dateCreated}}</div>
+      <div class="head-line">{{news.headline}}</div>
+      <div class="actions" fxLayoutAlign="start center">
+          <mat-icon (click)="editItem()">edit</mat-icon>
+          <mat-icon (click)="deleteItem()">delete</mat-icon>
+      </div>
   </div>
-  <div></div>
-  <!-- <div class="thumbnail">
-    <h1 (click)="goToDetails()">
-      <img height="180" width="180" src={{news.thumbnail}}>
-    </h1>
-  </div>
-  <div>
-    <h1 (click)="goToDetails()">
-      <mat-card-title>{{news.title}}</mat-card-title>
-    </h1>
-    <mat-card-subtitle>{{news.datecreated | dateCreated}}</mat-card-subtitle>
-    <mat-card-subtitle class="head-line">{{news.headline}}</mat-card-subtitle>
-  </div> -->
 </mat-card>

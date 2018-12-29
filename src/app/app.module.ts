@@ -18,6 +18,7 @@ import { NewsService } from './services/news.service';
 import { LoggerService } from './services/app-jssip/services/logger.service';
 import { LoadGuardService} from './components/login/can-load.service';
 import { AuthService } from './services/auth.service';
+import { PriceService } from './services/price-map.service';
 
 const appRoutes: Routes = [
   {
@@ -28,6 +29,16 @@ const appRoutes: Routes = [
   {
     path: 'news-manager',
     loadChildren: './components/news-manage/news-manage.module#NewsManagerModule',
+    canLoad: [LoadGuardService],
+  },
+  {
+    path: 'news-details',
+    loadChildren: './components/news-details/news-details.module#NewsDetailsModule',
+    canLoad: [LoadGuardService],
+  },
+  {
+    path: 'price-page',
+    loadChildren: './components/price-page/price-page.module#PricePageModule',
     canLoad: [LoadGuardService],
   },
   {
@@ -66,6 +77,7 @@ const appRoutes: Routes = [
       PropertyService,
       NewsService,
       AuthService,
+      PriceService,
       LoadGuardService,
       LoggerService,
       { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig },

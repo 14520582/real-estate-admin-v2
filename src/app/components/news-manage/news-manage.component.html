@@ -23,7 +23,7 @@
   </div>
   <div style="height: calc(100vh - 125px);" PerfectScrollbar>
     <div *ngIf="totalOfItems > 0;else noResult" fxLayout="row wrap" fxLayoutAlign="space-between center">
-      <app-news-card *ngFor="let news of newsData" fxFlex="50" [news]="news"></app-news-card>
+      <app-news-card (edit)="editNews(news.id)" (delete)="deleteNews(news.id, i)" *ngFor="let news of newsData; let i = index" fxFlex="50" [news]="news"></app-news-card>
     </div>
     <ng-template #noResult>
       <div class="empty" fxLayout="column" fxLayoutAlign="center center">

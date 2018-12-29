@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NewsService } from '../../services/news.service';
 import { CONSTANT } from '../../common/constant';
 import { FormControl } from '@angular/forms';
@@ -27,7 +27,7 @@ export class NewsManagerComponent implements OnInit {
   ];
   type: FormControl;
   constructor(
-    private route: ActivatedRoute,
+    private router: Router,
     private newsService: NewsService
   ) { 
     this.type = new FormControl('market');
@@ -45,6 +45,15 @@ export class NewsManagerComponent implements OnInit {
   }
   onPaginateChange(event: PageEvent) {
     this.loadData(this.type.value, event.pageIndex);
+  }
+  deleteNews(id, index) {
+    this.newsData.splice(index, 1);
+    this.newsService.deleteNews(id).subscribe(res => {
+
+    });
+  }
+  editNews(id) {
+    this.router.navigate(["/news-details/", {id: id}])
   }
   loadData(category, pageIndex) {
     this.newsService.getNewsByPageAndCategory(category,pageIndex).subscribe( data => {

@@ -3,8 +3,15 @@
         width: 100%;
         margin: 16px 8px
     }
+    .district {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .hint {
+        margin-bottom: 8px;
+    }
     .mat-form-field-wrapper {
-        padding-bottom: 0.6em;
+        padding-bottom: 0em;
     }
     .mat-form-field-appearance-outline .mat-form-field-infix {
         padding: .3em 0 .3em 0;
@@ -16,7 +23,7 @@
         top: 1.2em;
     }
     mat-form-field {
-        min-width: 350px;
+        min-width: 100px;
     }
     .content {
         height: 150px;

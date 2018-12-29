@@ -15,7 +15,7 @@
             </div>
         </div>
         <div *ngIf="isLogged" class="float-action" [ngClass]="{'expanded': exp.expanded, 'not-expanded': !exp.expanded}" fxLayoutAlign="space-between end">
-            <mat-expansion-panel #exp="matExpansionPanel" [disabled]="messageList.length === 0">
+            <mat-expansion-panel [ngStyle]="{'visibility': hiddenChatBx ? 'visible' : 'collapse'}" #exp="matExpansionPanel" [disabled]="messageList.length === 0">
                 <mat-expansion-panel-header [expandedHeight]="'48px'">
                     <mat-panel-title>
                         <div *ngFor="let tab of messageList; let i = index" (click)="$event.stopPropagation();changeTab(i)" [ngClass]="{'selected-tab' : selectedTab === i}" class="tab">{{tab.address}}
@@ -23,6 +23,7 @@
                         </div>
                         <div *ngIf="messageList.length === 0">Chưa có tin nhắn nào</div>
                     </mat-panel-title>
+                    <mat-icon  (click)="hiddenChatBx = false">keyboard_arrow_right</mat-icon>
                 </mat-expansion-panel-header>
                 <div class="chat-panel" fxLayout="column" *ngIf="messageList.length > 0">
                     <div #chatView style="width: 100%; height: 296px;" PerfectScrollbar>
@@ -48,6 +49,8 @@
                     </div>
                 </div>
             </mat-expansion-panel>
+            <button mat-fab  *ngIf="!hiddenChatBx" (click)="hiddenChatBx = true"><mat-icon>keyboard_arrow_left</mat-icon></button>
+
             <!-- <button mat-fab color="accent" (click)="openCallDialog()"><mat-icon>headset_mic</mat-icon></button> -->
 
         </div>

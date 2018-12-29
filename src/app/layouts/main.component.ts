@@ -24,6 +24,7 @@ export class MainComponent implements OnDestroy, OnInit
     settings: any;
     isExpanded = false;
     selectedTab = 0;
+    hiddenChatBx = true;
     @HostBinding('attr.app-layout-mode') layoutMode;
     text: FormControl;
     messageList = [];

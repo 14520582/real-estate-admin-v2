@@ -1,20 +1,20 @@
 import  {NgModule} from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { SharedModule } from "../../ui-core/shared.module";
-import { NewsDetailsComponent } from "./news-details.component";
+import { PricePageComponent } from "./price-page.component";
 import { MatFormFieldModule, MatInput, MatInputModule, MatSelectModule, MatButtonModule, MatIconModule, MatSnackBarModule } from '@angular/material';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: NewsDetailsComponent,
+    component: PricePageComponent,
   }
 ];
 
 @NgModule({
   declarations: [
-    NewsDetailsComponent
+    PricePageComponent
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -24,12 +24,11 @@ const routes: Routes = [
     MatIconModule,
     MatSnackBarModule,
     MatButtonModule,
-    MatSelectModule
   ],
   providers: [],
   exports: [
-    NewsDetailsComponent
+    PricePageComponent
   ]
 })
-export class NewsDetailsModule {
+export class PricePageModule {
 }

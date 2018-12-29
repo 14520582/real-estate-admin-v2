@@ -1,0 +1,34 @@
+<div class="section-container" fxLayout="row wrap" PerfectScrollbar>
+  <div *ngFor="let item of data; let i = index" fxFlex="30" style="margin: 0 8px" fxLayout="row" fxLayoutAlign="space-between start">
+    <div class="district">{{item.district.name}}</div>
+    <div fxLayout="column" fxLayoutAlign="start start">
+      <mat-form-field appearance="outline">
+        <mat-label>Giá đất nền (/m2)</mat-label>
+        <input (keydown.enter)="onEnter(item)" [(ngModel)]="item.rate" matInput>
+      </mat-form-field>
+      <div class="hint">{{item.rate | money}}</div>
+      <mat-form-field appearance="outline">
+        <mat-label>Mức lệnh (%)</mat-label>
+        <input (keydown.enter)="onEnter(item)" [(ngModel)]="item.percentage" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Giá chung cư (/m2)</mat-label>
+        <input (keydown.enter)="onEnter(item)" [(ngModel)]="item.apartmentrate" matInput>
+      </mat-form-field>
+      <div class="hint">{{item.apartmentrate | money}}</div>
+      <mat-form-field appearance="outline">
+          <mat-label>Mức lệnh (%)</mat-label>
+          <input (keydown.enter)="onEnter(item)" [(ngModel)]="item.apartmentpercentage" matInput>
+        </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Giá nhà (/m2)</mat-label>
+        <input (keydown.enter)="onEnter(item)" [(ngModel)]="item.houserate" matInput>
+      </mat-form-field>
+      <div class="hint">{{item.houserate | money}}</div>
+      <mat-form-field appearance="outline">
+          <mat-label>Mức lệnh (%)</mat-label>
+          <input (keydown.enter)="onEnter(item)" [(ngModel)]="item.housepercentage" matInput>
+        </mat-form-field>
+    </div>
+  </div>
+</div>
