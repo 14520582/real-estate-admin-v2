@@ -108,6 +108,7 @@ export class MainComponent implements OnDestroy, OnInit
     sendMessage() {
         if (this.text.value.trim()) {
             this.messageList[this.selectedTab].message.push({source: 'me', content: this.text.value});
+            console.log(this.messageList[this.selectedTab].address)
             this.UA.sendMsg(this.messageList[this.selectedTab].address, this.text.value);
             this.scrollToBottom();
             this.text.setValue('');

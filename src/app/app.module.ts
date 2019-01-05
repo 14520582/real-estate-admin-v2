@@ -19,6 +19,7 @@ import { LoggerService } from './services/app-jssip/services/logger.service';
 import { LoadGuardService} from './components/login/can-load.service';
 import { AuthService } from './services/auth.service';
 import { PriceService } from './services/price-map.service';
+import {PendingService} from './services/pending.service';
 
 const appRoutes: Routes = [
   {
@@ -50,6 +51,10 @@ const appRoutes: Routes = [
     loadChildren: './components/post-page/post-page.module#PostPageModule'
   },
   {
+    path: 'pending-list',
+    loadChildren: './components/pending-list/pending-list.module#PendingListModule'
+  },
+  {
     path: '**',
     redirectTo: 'manager-property'
   }
@@ -79,6 +84,7 @@ const appRoutes: Routes = [
       AuthService,
       PriceService,
       LoadGuardService,
+      PendingService,
       LoggerService,
       { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig },
     ]

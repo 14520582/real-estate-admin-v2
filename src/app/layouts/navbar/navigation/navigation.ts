@@ -38,7 +38,7 @@ export const navigation = [
         'title': 'Bất Động Sản Chờ Duyệt',
         'type': 'item',
         'icon': 'assignment',
-        'url': 'agent-scorecards',
+        'url': 'pending-list',
         'rbac': 'Evaluation',
         'tooltip': 'Agent Scorecards'
       }
