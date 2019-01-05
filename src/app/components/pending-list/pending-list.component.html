@@ -1,3 +1,54 @@
 <div class="contain-home">
-Pending
+    <div fxLayout="row wrap" fxLayoutAlign="start center">
+        <div *ngFor="let item of data; let i = index" fxFlex="49">
+            <mat-card class="container" fxLayout="row" fxLayoutAlign="start start">
+                <img *ngIf="item.cover" class="thumbnail" src={{item.cover}}>
+                <div class="details">
+                    <div>{{item.datecreated | dateCreated}}</div>
+                    <div fxLayout="row" class="owner-details">
+                        <div>{{item.nameOfOwner}}</div>
+                        <div class="detail" fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon>phone</mat-icon>
+                            <div>{{item.phone}}</div>
+                        </div>
+                        <div class="detail" fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon>mail</mat-icon>
+                            <div>{{item.email}}</div>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <div class="detail" fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon>details</mat-icon>
+                            <div>{{item.area}} m²</div>
+                        </div>
+                        <div class="detail" fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon>local_hotel</mat-icon>
+                            <div>{{item.numofbedroom}}</div>
+                        </div>
+                        <div class="detail" fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon>hot_tub</mat-icon>
+                            <div>{{item.numofbathroom}}</div>
+                        </div>
+                        <div class="detail" fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon>directions</mat-icon>
+                            <div>{{item.direction | direction}}</div>
+                        </div>
+                    </div>
+                    <div class="address">{{item.address}}</div>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <div class="form">{{item.form === 0 ? 'Bán: ' : 'Cho thuê: '}}</div>
+                        <div class="price">{{item.price | money}}</div>
+                    </div>
+                    <div *ngIf="item.title">{{item.title}}</div>
+                    <div *ngIf="item.description">{{item.description}}</div>
+                    <!-- <div class="title">{{news.title}}</div>
+                <div>{{news.datecreated | dateCreated}}</div>
+                <div class="head-line">{{news.headline}}</div> -->
+                    <div class="actions" fxLayoutAlign="start center">
+                        <mat-icon (click)="delete(item.id, i)">delete</mat-icon>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
 </div>

@@ -1,0 +1,37 @@
+<div class="contain-home" fxLayout="row">
+    <div style="padding: 16px" fxFlex="49" fxLayout="column">
+        <h4 class="title">Edit Profile</h4>
+        <form fxLayout="column" [formGroup]="userForm">
+            <mat-form-field floatLabel="never" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" (keydown.enter)="keyDown('name')" placeholder="Name" formControlName="name">
+            </mat-form-field>
+            <mat-form-field floatLabel="never" appearance="outline">
+                <mat-label>Email address</mat-label>
+                <input matInput type="text" (keydown.enter)="keyDown('email')" placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field floatLabel="never" appearance="outline">
+                <mat-label>Phone number</mat-label>
+                <input matInput type="text" (keydown.enter)="keyDown('phone')" placeholder="Phone number" formControlName="phone">
+            </mat-form-field>
+            <mat-form-field floatLabel="never" appearance="outline">
+                <mat-label>Home Address</mat-label>
+                <input matInput type="text" (keydown.enter)="keyDown('address')" placeholder="Home Address" formControlName="address">
+            </mat-form-field>
+        </form>
+    </div>
+    <div style="padding: 16px" fxFlex="49" fxLayout="column">
+        <h4 class="title">Change Password</h4>
+        <form fxLayout="column" [formGroup]="newPassForm">
+            <mat-form-field floatLabel="never" appearance="outline">
+                <mat-label>New Password</mat-label>
+                <input matInput type="password" placeholder="Add New Password" formControlName="new">
+            </mat-form-field>
+            <mat-form-field floatLabel="never" appearance="outline">
+                <mat-label>Old Password</mat-label>
+                <input matInput type="password" placeholder="Add Old Password" formControlName="old">
+            </mat-form-field>
+        </form>
+        <button mat-raised-button [disabled]="!newPassForm.valid" (click)="changePassword()">Save Password</button>
+    </div>
+</div>

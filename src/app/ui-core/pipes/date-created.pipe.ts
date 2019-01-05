@@ -8,7 +8,7 @@ export class DateCreatedPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     moment.locale("vi")
-    let temp : string = moment(value).format('dddd, DD/MM/YYYY | HH:MM');
+    let temp : string = moment(value).format('dddd, DD/MM/YYYY | HH:mm');
     return temp.charAt(0).toUpperCase() + temp.slice(1);
   }
 

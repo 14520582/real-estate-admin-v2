@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators'
 import 'rxjs/add/operator/catch';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { API } from '../common/api'
+import { Utils } from '../common/core-utils';
 
 @Injectable()
 export class AuthService {
@@ -28,7 +29,7 @@ export class AuthService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post<any>(API.SERVER + 'login', body, httpOptions);
+    return this.http.post<any>(API.API_ACCOUNT + '/login', body, httpOptions);
 
   }
 
@@ -39,7 +40,7 @@ export class AuthService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        // 'Token': this.token
+        'Token': Utils.getCurrentToken()
       })
     };
     return this.http.put<any>(API.API_ACCOUNT + '/update', user, httpOptions)
@@ -56,9 +57,9 @@ export class AuthService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        // 'Token': this.token
+        'Token': Utils.getCurrentToken()
       })
     };
-    return this.http.put<any>(API.API_ACCOUNT + 'changepassword?id=' + id + '&oldpassword=' + oldPassword + '&newpassword=' + newPassword, null, httpOptions)
+    return this.http.put<any>(API.API_ACCOUNT + '/changepassword?id=' + id + '&oldpassword=' + oldPassword + '&newpassword=' + newPassword, null, httpOptions)
   }
 }

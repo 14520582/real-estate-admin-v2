@@ -64,20 +64,20 @@ export const navigation = [
         'title': 'Thông tin cá nhân',
         'type': 'item',
         'icon': 'person',
-        'url': 'users',
+        'url': 'user-profile',
         'rbac': 'User',
         'tooltip': 'Users'
 
-      },
-      {
-        'id': 'teams',
-        'title': 'Địa chỉ SIP',
-        'type': 'item',
-        'icon': 'dialer_sip',
-        'url': 'j',
-        'rbac': 'Pool',
-        'tooltip': 'Teams'
       }
+      // {
+      //   'id': 'teams',
+      //   'title': 'Địa chỉ SIP',
+      //   'type': 'item',
+      //   'icon': 'dialer_sip',
+      //   'url': 'j',
+      //   'rbac': 'Pool',
+      //   'tooltip': 'Teams'
+      // }
     ]
   }
   ];

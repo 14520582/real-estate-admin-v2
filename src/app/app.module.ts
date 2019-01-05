@@ -51,6 +51,10 @@ const appRoutes: Routes = [
     loadChildren: './components/post-page/post-page.module#PostPageModule'
   },
   {
+    path: 'user-profile',
+    loadChildren: './components/user-profile/user-profile.module#UserProfileModule'
+  },
+  {
     path: 'pending-list',
     loadChildren: './components/pending-list/pending-list.module#PendingListModule'
   },

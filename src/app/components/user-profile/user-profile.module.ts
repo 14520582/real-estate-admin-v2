@@ -1,20 +1,20 @@
 import  {NgModule} from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { SharedModule } from "../../ui-core/shared.module";
-import { PendingListComponent } from "./pending-list.component";
+import { UserProfileComponent } from "./user-profile.component";
 import { MatButtonModule, MatInputModule, MatFormFieldModule, MatPaginatorModule, MatIconModule, MatSelectModule, MatCard, MatCardModule, MatSnackBarModule } from '@angular/material';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: PendingListComponent,
+    component: UserProfileComponent,
   }
 ];
 
 @NgModule({
   declarations: [
-    PendingListComponent
+    UserProfileComponent
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -30,8 +30,8 @@ const routes: Routes = [
   ],
   providers: [],
   exports: [
-    PendingListComponent
+    UserProfileComponent
   ]
 })
-export class PendingListModule {
+export class UserProfileModule {
 }
