@@ -1,48 +1,49 @@
-  <div class="section-container" fxLayout="row">
-    <form [formGroup]="news" fxFlex="35">
-      <mat-form-field appearance="outline">
-        <mat-label>Tiêu đề</mat-label>
-        <textarea (keydown.enter)="onKeyDown('title')" matInput placeholder="Nhập tiêu đề" formControlName="title"></textarea>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-          <mat-label>Loại tin tức</mat-label>
-          <mat-select placeholder="Chọn loại tin tức" disableOptionCentering formControlName="category">
-            <mat-option *ngFor="let item of newsTypes" [value]="item.value">
-              {{item.label}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      <mat-form-field appearance="outline">
-          <mat-label>Đoạn dẫn</mat-label>
-          <textarea (keydown.enter)="onKeyDown('headline')" style="height: 100px" matInput placeholder="Nhập đoạn dẫn" formControlName="headline"></textarea>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-          <mat-label>Ảnh bìa</mat-label>
-          <input (keydown.enter)="onKeyDown('thumbnail')" matInput placeholder="Nhập đường dẫn (url)" formControlName="thumbnail">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-          <mat-label>Đoạn 1</mat-label>
-          <textarea  (keydown.enter)="onKeyDown('content')" class="content" matInput placeholder="Nhập nội dung" formControlName="content"></textarea>
-      </mat-form-field>
-      <button *ngIf="!isEditing" mat-raised-button color="warn" [disabled]="!news.valid" (click)="createNews()">Lưu</button>
-    </form>
-    <div fxFlex="65">
-      <button mat-raised-button (click)="addUnit()">Thêm nội dung</button>
-      <div class="unit" PerfectScrollbar >
-        <div *ngFor="let item of unites; let i = index">
-          <div fxLayout="row">
-              <button mat-icon-button (click)="removeUnit(i)"><mat-icon>close</mat-icon></button>
-              <mat-form-field appearance="outline">
-                  <mat-label>Ảnh</mat-label>
-                  <input [(ngModel)]="unites[i].thumbnail" (keydown.enter)="saveUnit(i)" matInput placeholder="Nhập đường dẫn (url)">
-              </mat-form-field>
-          </div>
-            <mat-form-field  appearance="outline">
-                <mat-label>Đoạn {{i + 2}}</mat-label>
-                <textarea [(ngModel)]="unites[i].content" (keydown.enter)="saveUnit(i)" matInput placeholder="Nhập nội dung"></textarea>
-            </mat-form-field>
+<div class="section-container" fxLayout="row">
+  <form [formGroup]="news" fxFlex="35">
+    <mat-form-field appearance="outline">
+      <mat-label>Tiêu đề</mat-label>
+      <textarea (keydown.enter)="onKeyDown('title')" matInput placeholder="Nhập tiêu đề" formControlName="title"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Loại tin tức</mat-label>
+      <mat-select placeholder="Chọn loại tin tức" disableOptionCentering formControlName="category">
+        <mat-option *ngFor="let item of newsTypes" [value]="item.value">
+          {{item.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Đoạn dẫn</mat-label>
+      <textarea (keydown.enter)="onKeyDown('headline')" style="height: 100px" matInput placeholder="Nhập đoạn dẫn" formControlName="headline"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Ảnh bìa</mat-label>
+      <input (keydown.enter)="onKeyDown('thumbnail')" matInput placeholder="Nhập đường dẫn (url)" formControlName="thumbnail">
+    </mat-form-field>
+    <input style="margin-bottom: 8px" type="file" (change)="upload($event, -1)" accept=".png,.jpg" />
+    <mat-form-field appearance="outline">
+      <mat-label>Đoạn 1</mat-label>
+      <textarea (keydown.enter)="onKeyDown('content')" class="content" matInput placeholder="Nhập nội dung" formControlName="content"></textarea>
+    </mat-form-field>
+    <button *ngIf="!isEditing" mat-raised-button color="warn" [disabled]="!news.valid" (click)="createNews()">Lưu</button>
+  </form>
+  <div fxFlex="65">
+    <button mat-raised-button (click)="addUnit()">Thêm nội dung</button>
+    <div class="unit" PerfectScrollbar>
+      <div *ngFor="let item of unites; let i = index">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <button mat-icon-button (click)="removeUnit(i)"><mat-icon>close</mat-icon></button>
+          <mat-form-field appearance="outline">
+            <mat-label>Ảnh</mat-label>
+            <input [(ngModel)]="unites[i].thumbnail" (keydown.enter)="saveUnit(i)" matInput placeholder="Nhập đường dẫn (url)">
+          </mat-form-field>
+          <input style="height: 30px; margin-left: 6px" type="file" (change)="upload($event, i)" accept=".png,.jpg" />
         </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Đoạn {{i + 2}}</mat-label>
+          <textarea [(ngModel)]="unites[i].content" (keydown.enter)="saveUnit(i)" matInput placeholder="Nhập nội dung"></textarea>
+        </mat-form-field>
       </div>
     </div>
   </div>
-
+</div>

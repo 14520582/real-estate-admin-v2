@@ -20,7 +20,8 @@ import { LoadGuardService} from './components/login/can-load.service';
 import { AuthService } from './services/auth.service';
 import { PriceService } from './services/price-map.service';
 import {PendingService} from './services/pending.service';
-
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireModule } from '@angular/fire';
 const appRoutes: Routes = [
   {
     path: 'manager-property',
@@ -77,7 +78,14 @@ const appRoutes: Routes = [
         UiCoreModule.forRoot(layoutConfig),
         SharedModule,
         AppStoreModule,
-        MainModule
+        MainModule,
+        AngularFireModule.initializeApp({
+          apiKey: "AIzaSyDHGf9OI9x1GexWtCDgZqNcsIYy4U0t0nc",
+          authDomain: "goldengavel-5dca5.firebaseapp.com",
+          storageBucket: "goldengavel-5dca5.appspot.com",
+          projectId: "goldengavel-5dca5",
+        }),
+        AngularFireStorageModule
     ],
     bootstrap   : [
         AppComponent

@@ -9,12 +9,16 @@
               <mat-radio-button value="1">Cho thuê</mat-radio-button>
             </mat-radio-group>
           </div>
-          <div class="row" fxLayout="row" fxLayoutAlign="start center">
+          <div class="row" fxLayout="row" fxLayoutAlign="start start">
             <div class="number">2</div>
             <div class="category">Hình ảnh (URL):</div>
-            <mat-form-field appearance="outline">
-              <input matInput placeholder="Đường dẫn ảnh" formControlName="cover">
-            </mat-form-field>
+            <div fxLayout="column">
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="Đường dẫn ảnh" formControlName="cover">
+              </mat-form-field>
+              <progress style="margin-top: 3px" max="100" [value]="(uploadProgress | async)"></progress>
+            </div>
+            <input type="file" (change)="upload($event)" accept=".png,.jpg" />
           </div>
           <div class="row" fxLayout="row" fxLayoutAlign="start center">
             <div class="number">3</div>

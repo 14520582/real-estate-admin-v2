@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NewsService } from '../../services/news.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
+import { AngularFireStorage } from 'angularfire2/storage';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-news-details',
@@ -26,6 +29,7 @@ export class NewsDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private afStorage: AngularFireStorage,
     private snackBar: MatSnackBar,
     private newsService: NewsService
   ) { 
@@ -60,6 +64,16 @@ export class NewsDetailsComponent implements OnInit {
             this.submitChange(newItem);
           })
         })
+      } else {
+        this.isEditing = false;
+        this.news = new FormGroup({
+          title: new FormControl('', [Validators.required]),
+          headline: new FormControl('', [Validators.required]),
+          thumbnail: new FormControl('', [Validators.required]),
+          content: new FormControl('', [Validators.required]),
+          category: new FormControl('', [Validators.required])
+        })
+        this.unites = [];
       }
     });
   }
@@ -80,11 +94,40 @@ export class NewsDetailsComponent implements OnInit {
       })
     }
   }
+  upload(event, index) {
+    const randomId = 'upload/realestate/' + Math.random().toString(36).substring(2);
+    const ref = this.afStorage.ref(randomId);
+    let task: any = ref.put(event.target.files[0]);
+    task.snapshotChanges().pipe(
+      // finalize((a) => {console.log(a)})
+    )
+    .subscribe( snapshot => {
+      // get image upload progress
+    },
+    error => alert('Some error occured while uploading the picture'),
+    () => ref.getDownloadURL().subscribe(downloadUrl => {
+      // finally get download url from ref on completion of observable
+      if(index === -1) {
+        this.news.controls['thumbnail'].setValue(downloadUrl);
+        this.onKeyDown('thumbnail');
+      }else {
+        this.unites[index].thumbnail = downloadUrl;
+        this.saveUnit(index);
+      }
+    }))
+  }
   saveUnit(i) {
     if (this.isEditing) {
       const ref = this.snackBar.open("Đang cập nhật tin tức...");
       if(this.unites[i].id) {
-        this.newsService.updateUnit(this.unites[i]).subscribe( res => {
+        this.newsService.updateUnit(this.unites[i]).pipe(
+          catchError(err => {
+            this.snackBar.open("Có lỗi xảy ra", '', {duration: 1000});
+            ref.dismiss();
+            return throwError(err);
+          })
+        )
+        .subscribe( res => {
           this.newsData.unites[i] = res;
           ref.dismiss();
         })

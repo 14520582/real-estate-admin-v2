@@ -76,7 +76,7 @@ export class NewsService {
         'Token': Utils.getCurrentToken()
       })
     };
-    return this.http.post<any>(API.API_UNIT + '/update', body, httpOptions);
+    return this.http.put<any>(API.API_UNIT + '/update', body, httpOptions);
   }
   getTopics(): any[] {
     return DATA.TOPICS;

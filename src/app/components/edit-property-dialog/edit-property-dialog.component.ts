@@ -4,6 +4,8 @@ import { DATA } from '../../common/data'
 import { PropertyService } from '../../services/property.service';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { AngularFireStorage } from 'angularfire2/storage';
+
 @Component({
   selector: 'app-edit-property-dialog',
   templateUrl: './edit-property-dialog.component.html',
@@ -16,9 +18,12 @@ export class EditPropertyComponent implements OnInit {
   wards = [];
   directions: string[] = DATA.directions;
   floors: string[] = DATA.floors;
+  uploadProgress: any;
+
   constructor(
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<EditPropertyComponent>,
+    private afStorage: AngularFireStorage,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private propertyService: PropertyService
   ) {
@@ -64,6 +69,23 @@ export class EditPropertyComponent implements OnInit {
       console.log(body);
       this.dialogRef.close(body);
     }
+  }
+  upload(event) {
+    const randomId = 'upload/realestate/' + Math.random().toString(36).substring(2);
+    const ref = this.afStorage.ref(randomId);
+    let task: any = ref.put(event.target.files[0]);
+    this.uploadProgress = task.percentageChanges();
+    task.snapshotChanges().pipe(
+      // finalize((a) => {console.log(a)})
+    )
+    .subscribe( snapshot => {
+      // get image upload progress
+    },
+    error => alert('Some error occured while uploading the picture'),
+    () => ref.getDownloadURL().subscribe(downloadUrl => {
+      // finally get download url from ref on completion of observable
+      this.realEstateForm.controls['cover'].setValue(downloadUrl);
+    }))
   }
   ngOnInit() {
     this.realEstateForm = this.formBuilder.group({
