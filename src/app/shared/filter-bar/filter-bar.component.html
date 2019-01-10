@@ -31,7 +31,7 @@
                             <mat-option *ngFor="let type of types" [value]="type">{{getType(type)}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <!-- <div class="selection-bar" (click)="$event.stopPropagation()">
+                    <div class="selection-bar" (click)="$event.stopPropagation()">
                         <mat-icon>monetization_on</mat-icon>
                         <mat-slider class="main-color" formControlName="price" step="1" max="10" min="0" thumbLabel></mat-slider>
                         <div>{{getPriceFilter(filterForm.controls['price'].value)}}</div>
@@ -40,7 +40,7 @@
                         <mat-icon>details</mat-icon>
                         <mat-slider class="main-color" formControlName="area" step="20" max="140" min="0" thumbLabel></mat-slider>
                         <div>{{getAreaFilter(filterForm.controls['area'].value)}}</div>
-                    </div> -->
+                    </div>
                 </div>
                 <button mat-stroked-button class="main-color" style="margin-right: 16px;" (click)="filter()">Tìm kiếm</button>
             </mat-expansion-panel-header>
