@@ -1,5 +1,5 @@
 <div class="section-container" fxLayout="row">
-  <form [formGroup]="news" fxFlex="35">
+  <form [formGroup]="news" fxFlex="34" fxLayout="column">
     <mat-form-field appearance="outline">
       <mat-label>Tiêu đề</mat-label>
       <textarea (keydown.enter)="onKeyDown('title')" matInput placeholder="Nhập tiêu đề" formControlName="title"></textarea>
@@ -27,7 +27,7 @@
     </mat-form-field>
     <button *ngIf="!isEditing" mat-raised-button color="warn" [disabled]="!news.valid" (click)="createNews()">Lưu</button>
   </form>
-  <div fxFlex="65">
+  <div fxFlex="64" style="margin-left: 16px">
     <button mat-raised-button (click)="addUnit()">Thêm nội dung</button>
     <div class="unit" PerfectScrollbar>
       <div *ngFor="let item of unites; let i = index">

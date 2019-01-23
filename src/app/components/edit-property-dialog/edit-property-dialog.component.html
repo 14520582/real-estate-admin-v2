@@ -127,9 +127,11 @@
             <div>
               <div fxLayout="row">
                 <mat-form-field appearance="outline">
+                  <mat-label>Số tầng</mat-label>
                   <input matInput placeholder="Số tầng" formControlName="floor">
                 </mat-form-field>
                 <mat-form-field appearance="outline">
+                  <mat-label>Hướng</mat-label>
                   <mat-select placeholder="Hướng" formControlName="direction">
                     <mat-option *ngFor="let direction of directions" [value]="direction.value">{{direction.name}}</mat-option>
                   </mat-select>
@@ -137,9 +139,11 @@
               </div>
               <div fxLayout="row" style="margin-top: 8px;">
                 <mat-form-field appearance="outline">
+                  <mat-label>Số phòng tắm</mat-label>
                   <input matInput placeholder="Số phòng tắm" formControlName="numberOfBedRoom">
                 </mat-form-field>
                 <mat-form-field appearance="outline">
+                  <mat-label>Số phòng ngủ</mat-label>
                   <input matInput placeholder="Số phòng ngủ" formControlName="numberOfBathRoom">
                 </mat-form-field>
               </div>

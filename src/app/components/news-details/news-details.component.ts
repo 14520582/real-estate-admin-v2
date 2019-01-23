@@ -55,7 +55,7 @@ export class NewsDetailsComponent implements OnInit {
             content: new FormControl(data.content, [Validators.required]),
             category: new FormControl(data.category.id, [Validators.required])
           })
-          this.unites = data.unites
+          this.unites = JSON.parse(JSON.stringify(data.unites));
           this.news.controls['category'].valueChanges.subscribe( value => {
             const newItem = {
               ...this.newsData,
@@ -107,19 +107,19 @@ export class NewsDetailsComponent implements OnInit {
     error => alert('Some error occured while uploading the picture'),
     () => ref.getDownloadURL().subscribe(downloadUrl => {
       // finally get download url from ref on completion of observable
-      if(index === -1) {
+      if (index === -1) {
         this.news.controls['thumbnail'].setValue(downloadUrl);
         this.onKeyDown('thumbnail');
-      }else {
+      } else {
         this.unites[index].thumbnail = downloadUrl;
         this.saveUnit(index);
       }
-    }))
+    }));
   }
   saveUnit(i) {
     if (this.isEditing) {
       const ref = this.snackBar.open("Đang cập nhật tin tức...");
-      if(this.unites[i].id) {
+      if (this.unites[i].id) {
         this.newsService.updateUnit(this.unites[i]).pipe(
           catchError(err => {
             this.snackBar.open("Có lỗi xảy ra", '', {duration: 1000});
@@ -130,17 +130,23 @@ export class NewsDetailsComponent implements OnInit {
         .subscribe( res => {
           this.newsData.unites[i] = res;
           ref.dismiss();
-        })
+        });
       } else {
-        this.newsService.saveUnit({news: {id: this.newsData.id}, ...this.unites[i]}).subscribe( res => {
+        this.newsService.saveUnit({news: {id: this.newsData.id}, ...this.unites[i]}).pipe(
+          catchError(err => {
+            this.snackBar.open("Có lỗi xảy ra", '', {duration: 1000});
+            ref.dismiss();
+            return throwError(err);
+          })
+        ).subscribe( res => {
           this.newsData.unites[i] = res;
           ref.dismiss();
-        })
+        });
       }
     }
   }
   removeUnit(i) {
-    if (this.isEditing) {
+    if (this.isEditing && this.unites[i].id) {
       const ref = this.snackBar.open("Đang cập nhật tin tức...");
       this.newsService.deleteUnit(this.unites[i].id).subscribe( res => {
         ref.dismiss();
@@ -151,7 +157,7 @@ export class NewsDetailsComponent implements OnInit {
 
   }
   addUnit() {
-    this.unites.push({thumbnail: '', content: ''})
+    this.unites.push({thumbnail: '', content: ''});
   }
   createNews() {
     const body = {
