@@ -28,6 +28,7 @@ export class MainComponent implements OnDestroy, OnInit
     @HostBinding('attr.app-layout-mode') layoutMode;
     text: FormControl;
     messageList = [];
+    sub: Subscription;
     isLogged = false;
     constructor(
         private _renderer: Renderer2,
@@ -70,11 +71,12 @@ export class MainComponent implements OnDestroy, OnInit
         } catch(err) { }                 
     }
     ngOnInit() {
-        this.configurationStore.applyConfiguration().subscribe(ret => {
-            if (this.configuration.autoconnect) {
-              this.UA.connect();
-            }
-          });
+      this.sub = this.configurationStore.applyConfiguration().subscribe(ret => {
+        if (this.configuration.autoconnect) {
+          this.UA.connect();
+          this.sub.unsubscribe();
+        }
+      });
           this.loggerService.log.subscribe(message => {
             if(message) {
                 // this.messageList.push({source: 'agent', content: message});
